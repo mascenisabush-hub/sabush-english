@@ -161,8 +161,8 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                            err.code === 'auth/popup-closed-by-user' ||
                            (err.message && (err.message.includes('popup-blocked') || err.message.includes('popup-closed-by-user')));
 
-      if (isDomainError || (isSandboxEnvironment && isPopupError)) {
-        console.log('[SABUSH CLUB GOOGLE SIMULATOR] Domain/Pop-up restriction detected. Activating google simulator...');
+      if (isSandboxEnvironment && (isDomainError || isPopupError)) {
+        console.log('[SABUSH CLUB GOOGLE SIMULATOR] Domain/Pop-up restriction detected in sandbox. Activating google simulator...');
         setShowGoogleSandboxSimulator(true);
         setError('O login do Google falhou devido a restrições do domínio ou popups bloqueados na pré-visualização. Ativámos o Simulador Google de Teste para poder aceder imediatamente!');
         return;
@@ -175,6 +175,8 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
         friendlyError = 'O login com o Google foi fechado antes de ser concluído.';
       } else if (err.code === 'auth/operation-not-allowed') {
         friendlyError = 'O login por Google não está ativo. Por favor, ative o método "Google" na Consola do Firebase: https://console.firebase.google.com/project/' + (firebaseConfig.projectId || 'your-project') + '/authentication/providers';
+      } else if (isDomainError) {
+        friendlyError = 'Este site (' + (typeof window !== 'undefined' ? window.location.hostname : '') + ') ainda não está autorizado no Firebase. Adicione este domínio em: Consola Firebase > Authentication > Settings > Authorized domains.';
       }
       setError(friendlyError);
     } finally {
