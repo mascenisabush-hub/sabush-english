@@ -81,7 +81,7 @@ export function Layout({ children, activeTab, setActiveTab, xp, streak, onGoBack
   const isMoreActive = moreItems.some(item => item.id === activeTab);
 
   return (
-    <div className="min-h-screen bg-slate-100 text-slate-900 font-sans flex flex-col md:flex-row antialiased max-w-md md:max-w-6xl lg:max-w-7xl mx-auto relative border-x border-slate-200 shadow-xl">
+    <div className="min-h-screen bg-[#EFE1D6] text-slate-900 font-sans flex flex-col md:flex-row antialiased max-w-md md:max-w-6xl lg:max-w-7xl mx-auto relative border-x border-[#E3D2C2] shadow-xl">
       {/* 
          =========================================
          SIDEBAR: Persistent on Tablet & Desktop (>= md)
@@ -194,7 +194,7 @@ export function Layout({ children, activeTab, setActiveTab, xp, streak, onGoBack
          MAIN AREA: Mobile & Desktop Wrappers
          =========================================
       */}
-      <div className="flex-1 flex flex-col min-w-0 md:h-screen relative bg-slate-50">
+      <div className="flex-1 flex flex-col min-w-0 md:h-screen relative bg-[#F6EEE7]">
         
         {/* Sticky Header is visible ONLY on mobile (hidden on md) with a smooth blue gradient */}
         <header className="sticky top-0 z-30 bg-gradient-to-r from-blue-700 via-blue-800 to-indigo-950 text-white px-4 py-3 flex items-center justify-between border-b border-blue-900/10 shadow-md md:hidden">
@@ -232,7 +232,7 @@ export function Layout({ children, activeTab, setActiveTab, xp, streak, onGoBack
         <div className="hidden md:block h-1.5 w-full bg-gradient-to-r from-teal-600 via-brand-gold-400 to-red-600 shrink-0" />
 
         {/* Primary Scrollable Content Frame containing constrained centered container on md */}
-        <main ref={mainRef} className="flex-1 pb-24 md:pb-12 overflow-y-auto px-4.5 py-5 bg-slate-50 flex flex-col justify-between">
+        <main ref={mainRef} className="flex-1 pb-24 md:pb-12 overflow-y-auto px-4.5 py-5 bg-[#F6EEE7] flex flex-col justify-between">
           <div className="w-full max-w-4xl mx-auto flex-1 flex flex-col justify-between">
             <div>
               {canGoBack && onGoBack && (
