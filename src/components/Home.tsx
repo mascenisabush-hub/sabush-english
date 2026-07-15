@@ -21,15 +21,11 @@ import {
   Briefcase,
   Plane,
   Volume2,
-  ArrowRight,
-  Gift,
-  Award,
-  MessageCircle,
-  Lightbulb,
-  BarChart3
+  ArrowRight
 } from 'lucide-react';
 import { Mascot } from './Mascot';
-import { SabushLogo } from './SabushLogo';
+// @ts-ignore
+import heroBanner from '../assets/images/hero_banner.png';
 import { getInspirationCards } from '../firebase';
 import { InspirationCard, PhrasePack } from '../types';
 import { InspirationCardView } from './InspirationCardView';
@@ -104,115 +100,32 @@ export function HomeView({
 
   return (
     <div className="space-y-6 animate-fade-in pb-12">
-      {/* Premium Split Hero Banner — logo lockup, headline, floating info cards, feature bar */}
-      <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-3xl overflow-hidden shadow-lg border border-slate-200" id="home_hero_banner">
-        <div className="flex flex-col lg:flex-row items-stretch">
+      {/* Hero Banner — uploaded brand banner image, with functional CTAs below */}
+      <div className="rounded-3xl overflow-hidden shadow-lg border border-slate-200" id="home_hero_banner">
+        <img
+          src={heroBanner}
+          alt="Sabush English Club — Aprenda Inglês com Confiança"
+          className="w-full h-auto object-cover"
+        />
 
-          {/* Left: brand lockup, headline, copy, CTAs */}
-          <div className="flex-1 p-6 sm:p-8 flex flex-col justify-center">
-            <div className="mb-5">
-              <SabushLogo size="sm" onDark={false} />
-            </div>
+        <div className="bg-brand-navy-700 p-5 sm:p-6">
+          {/* CTA Group for 90-Day guided and exploration flows */}
+          <div className="flex flex-col sm:flex-row items-center gap-3 no-print">
+            <button
+              onClick={() => onNavigateToTab?.('confidence_path')}
+              className="w-full sm:flex-1 bg-yellow-400 hover:bg-yellow-500 text-slate-950 active:scale-95 py-3.5 px-5 rounded-2xl font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md flex items-center justify-center space-x-2.5 cursor-pointer min-h-[48px] border border-transparent"
+            >
+              <Sparkles className="w-5 h-5 text-slate-950 fill-slate-950" />
+              <span>Caminho da Confiança (90 Dias)</span>
+            </button>
 
-            <div className="inline-flex items-center space-x-1.5 self-start bg-brand-navy-600/10 px-3 py-1 rounded-full text-[10px] font-black tracking-widest text-brand-navy-700 border border-brand-navy-600/20 uppercase mb-3">
-              <Sparkles className="w-3.5 h-3.5 text-brand-gold-600 fill-brand-gold-600" />
-              <span>Aprenda Inglês com Confiança</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl font-black leading-[1.05] tracking-tight text-brand-navy-700">
-              Fale Inglês com a Melhor Metodologia! 🇲🇿
-            </h1>
-
-            <p className="text-sm text-slate-600 leading-relaxed font-semibold mt-4 max-w-md">
-              Do Iniciante à Fluência — Inglês prático para a vida real. Lições intuitivas e suporte inteligente de IA, desenhado especialmente para o seu quotidiano em Moçambique.
-            </p>
-
-            <div className="mt-5 self-start inline-flex items-center space-x-2 bg-brand-navy-700 text-white px-4 py-2.5 rounded-full font-black text-xs uppercase tracking-wider shadow-md">
-              <Gift className="w-4 h-4 text-brand-gold-400" />
-              <span>6 Aulas Grátis Disponíveis</span>
-            </div>
-
-            {/* CTA Group for 90-Day guided and exploration flows */}
-            <div className="mt-6 flex flex-col sm:flex-row items-center gap-3 no-print">
-              <button
-                onClick={() => onNavigateToTab?.('confidence_path')}
-                className="w-full sm:flex-1 bg-yellow-400 hover:bg-yellow-500 text-slate-950 active:scale-95 py-3.5 px-5 rounded-2xl font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md flex items-center justify-center space-x-2.5 cursor-pointer min-h-[48px] border border-transparent"
-              >
-                <Sparkles className="w-5 h-5 text-slate-950 fill-slate-950" />
-                <span>Caminho da Confiança (90 Dias)</span>
-              </button>
-
-              <button
-                onClick={onStartLearning}
-                className="w-full sm:w-auto bg-brand-navy-700 hover:bg-brand-navy-800 text-white active:scale-95 py-3.5 px-5 rounded-2xl font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-sm flex items-center justify-center space-x-2 cursor-pointer min-h-[48px] border border-brand-navy-700"
-              >
-                <span>Explorar Todas as Aulas</span>
-                <LogIn className="w-4 h-4 text-white" />
-              </button>
-            </div>
-          </div>
-
-          {/* Right: illustrative visual with floating info cards instead of a stock photo */}
-          <div className="flex-1 relative bg-gradient-to-br from-brand-navy-600 via-brand-navy-700 to-brand-navy-800 p-8 flex items-center justify-center min-h-[280px] overflow-hidden">
-            <div className="absolute top-0 right-0 w-36 h-36 bg-white/5 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute -bottom-8 -left-8 w-28 h-28 bg-brand-gold-500/10 rounded-full blur-2xl" />
-
-            {/* Speech bubble */}
-            <div className="absolute top-5 left-4 sm:left-8 bg-brand-navy-800 text-white text-xs font-bold px-4 py-3 rounded-2xl rounded-bl-sm shadow-lg max-w-[150px] z-10">
-              Vamos melhorar o seu Inglês!
-            </div>
-
-            <Mascot expression="happy" size="xl" onDark={true} className="relative z-0 drop-shadow-2xl" />
-
-            {/* Floating "Today's Lesson" card */}
-            <div className="absolute top-6 right-2 sm:right-6 bg-white rounded-2xl shadow-xl p-3.5 w-40 space-y-2 z-10">
-              <p className="text-[11px] font-black text-brand-navy-700">Aula de Hoje</p>
-              <div className="flex items-center space-x-1.5 text-[10px] font-bold text-slate-700">
-                <BookOpen className="w-3.5 h-3.5 text-sky-600" /><span>Vocabulário</span>
-              </div>
-              <div className="flex items-center space-x-1.5 text-[10px] font-bold text-slate-700">
-                <GraduationCap className="w-3.5 h-3.5 text-amber-600" /><span>Gramática</span>
-              </div>
-              <div className="flex items-center space-x-1.5 text-[10px] font-bold text-slate-700">
-                <Mic className="w-3.5 h-3.5 text-brand-navy-600" /><span>Pronúncia</span>
-              </div>
-              <div className="flex items-center space-x-1.5 text-[10px] font-bold text-slate-700">
-                <MessageCircle className="w-3.5 h-3.5 text-emerald-600" /><span>Conversação</span>
-              </div>
-            </div>
-
-            {/* Floating "Grammar Tip" card */}
-            <div className="absolute bottom-5 right-2 sm:right-6 bg-white rounded-2xl shadow-xl p-3.5 w-44 space-y-1 z-10">
-              <div className="flex items-center space-x-1.5">
-                <Lightbulb className="w-3.5 h-3.5 text-amber-500 fill-amber-400" />
-                <p className="text-[11px] font-black text-brand-navy-700">Dica de Gramática</p>
-              </div>
-              <p className="text-[10px] text-slate-600 font-semibold leading-snug">
-                Use "Do" para rotinas e hábitos. Ex: I do my homework every day.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Feature bar */}
-        <div className="bg-brand-navy-800 px-4 py-3.5">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center sm:text-left">
-            <div className="flex items-center justify-center sm:justify-start space-x-2 text-white">
-              <GraduationCap className="w-4 h-4 text-brand-gold-400 shrink-0" />
-              <span className="text-[10px] sm:text-xs font-bold">Aulas Especializadas</span>
-            </div>
-            <div className="flex items-center justify-center sm:justify-start space-x-2 text-white">
-              <Volume2 className="w-4 h-4 text-brand-gold-400 shrink-0" />
-              <span className="text-[10px] sm:text-xs font-bold">Áudio e Pronúncia</span>
-            </div>
-            <div className="flex items-center justify-center sm:justify-start space-x-2 text-white">
-              <BarChart3 className="w-4 h-4 text-brand-gold-400 shrink-0" />
-              <span className="text-[10px] sm:text-xs font-bold">Acompanhe o Progresso</span>
-            </div>
-            <div className="flex items-center justify-center sm:justify-start space-x-2 text-white">
-              <Award className="w-4 h-4 text-brand-gold-400 shrink-0" />
-              <span className="text-[10px] sm:text-xs font-bold">Certificado de Conclusão</span>
-            </div>
+            <button
+              onClick={onStartLearning}
+              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white active:scale-95 py-3.5 px-5 rounded-2xl font-extrabold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-sm flex items-center justify-center space-x-2 cursor-pointer min-h-[48px] border border-white/20"
+            >
+              <span>Explorar Todas as Aulas</span>
+              <LogIn className="w-4 h-4 text-white" />
+            </button>
           </div>
         </div>
       </div>
