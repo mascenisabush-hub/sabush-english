@@ -34,12 +34,17 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
   const [simEmail, setSimEmail] = useState('sabushagency@gmail.com');
   const [copiedText, setCopiedText] = useState<string | null>(null);
 
-  // Sandbox / Dynamic Preview environment check
+  // Sandbox / local-dev environment check.
+  // IMPORTANT: 'run.app' was previously included here, but that is also the
+  // hostname pattern of the real deployed Cloud Run production app (see the
+  // APP_URL fallback in server.ts), so it was wrongly treating production
+  // traffic as "sandbox" and exposing the guest bypass button + Google auth
+  // simulator to real users. Only genuine local development hosts are
+  // auto-detected now. To test the simulator on a deployed URL, use the
+  // explicit ?dev=true query param or the 5-click logo gesture instead.
   const isSandboxEnvironment = typeof window !== 'undefined' && (
-    window.location.hostname.includes('run.app') || 
-    window.location.hostname.includes('localhost') || 
+    window.location.hostname.includes('localhost') ||
     window.location.hostname.includes('127.0.0.1') ||
-    window.location.hostname.includes('google') ||
     window.location.hostname.includes('webcontainer') ||
     window.location.hostname === ''
   );
