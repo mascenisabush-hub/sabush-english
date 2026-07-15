@@ -261,14 +261,15 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A2A4A] text-slate-800 flex flex-col justify-between p-4 md:p-6 relative overflow-hidden font-sans">
-      {/* Soft elegant gold and blue ambient background glows on the navy backdrop */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#CFAC62]/10 rounded-full blur-[100px] pointer-events-none" />
+    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,_#1F6F4B_0%,_#0E3A28_45%,_#081F16_100%)] text-slate-800 flex flex-col justify-between p-4 md:p-6 relative overflow-hidden font-sans">
+      {/* Radiant gold and emerald ambient glows on the dark green backdrop */}
+      <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#CFAC62]/15 rounded-full blur-[110px] pointer-events-none" />
       <div className="absolute -bottom-32 -left-32 w-[28rem] h-[28rem] rounded-full border border-[#CFAC62]/20 pointer-events-none" />
-      <div className="absolute top-1/3 left-10 w-64 h-64 bg-[#1D5C97]/20 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-64 h-64 bg-[#2E8F63]/30 rounded-full blur-[90px] pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-72 h-72 bg-[#1F6F4B]/25 rounded-full blur-[100px] pointer-events-none" />
 
-      {/* Brand Ribbon Accent at Top of screen - blue to gold silk thread */}
-      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#153E68] via-[#CFAC62] to-[#1D5C97] z-50" />
+      {/* Brand Ribbon Accent at Top of screen - emerald to gold silk thread */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#0E3A28] via-[#CFAC62] to-[#1F6F4B] z-50" />
 
       <div className="flex-1 flex flex-col justify-center items-center py-4 z-10 w-full animate-fade-in">
         {/* Main luxury responsive card */}
