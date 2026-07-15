@@ -432,9 +432,12 @@ export function ConfidencePath({
     // Check if the day is completed, active or locked
     const isActive = day === currentDay;
     const isCompleted = completedDays.includes(day);
-    const isLocked = day > currentDay && !isCompleted;
+    // TEMP: all days unlocked for free testing, so just open the day directly.
+    // Restore the line below to re-enable the catch-up flow for locked days.
+    // const isLocked = day > currentDay && !isCompleted;
+    const isLocked = false;
 
-    if (isCompleted || isActive) {
+    if (isCompleted || isActive || !isLocked) {
       setSelectedDay(day);
       setIsStudyModeActive(true);
     } else if (isLocked) {
@@ -1487,7 +1490,9 @@ export function ConfidencePath({
             const isExpanded = activeModuleId === mod.id;
             const isCompleted = mod.days.every(d => completedDays.includes(d));
             const isActive = mod.days.includes(currentDay);
-            const isLocked = !isActive && !isCompleted && mod.id > getModuleForDay(currentDay).id;
+            // TEMP: all modules unlocked for free testing. Restore the line below to re-enable progression locking.
+            // const isLocked = !isActive && !isCompleted && mod.id > getModuleForDay(currentDay).id;
+            const isLocked = false;
 
             return (
               <div 
@@ -1568,7 +1573,9 @@ export function ConfidencePath({
                         const dayIndex = ((day - 1) % 5) + 1;
                         const isDayComplete = completedDays.includes(day);
                         const isDayActive = day === currentDay;
-                        const isDayLocked = day > currentDay && !isDayComplete;
+                        // TEMP: all days unlocked for free testing. Restore the line below to re-enable progression locking.
+                        // const isDayLocked = day > currentDay && !isDayComplete;
+                        const isDayLocked = false;
 
                         // Rhythmic cycle label in Portuguese
                         const dayLabels: { [key: number]: string } = {
