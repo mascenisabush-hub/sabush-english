@@ -8,7 +8,7 @@ import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
 // Import the generated premium branding banner asset
 // @ts-ignore
-import sabushBanner from '../assets/images/sabush_banner_1781359379070.jpg';
+import sabushBanner from '../assets/images/sabush_logo_transparent.png';
 
 interface SabushLogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
