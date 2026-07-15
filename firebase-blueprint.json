@@ -1,0 +1,447 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User account information and their verified learning progress",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The Firebase Auth user ID unique to this learner"
+        },
+        "name": {
+          "type": "string",
+          "description": "The human readable name of the user"
+        },
+        "email": {
+          "type": "string",
+          "description": "The optional verified email address of the user"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "The optional verified cell phone number of the user in Mozambique"
+        },
+        "level": {
+          "type": "string",
+          "enum": ["beginner", "intermediate", "advanced"],
+          "description": "Selected English learning competency level"
+        },
+        "learningGoal": {
+          "type": "string",
+          "description": "Desired goal for learning English"
+        },
+        "xp": {
+          "type": "integer",
+          "description": "User earned Experience Points"
+        },
+        "streak": {
+          "type": "integer",
+          "description": "Active learning streak in consecutive days"
+        },
+        "completedLessons": {
+          "type": "array",
+          "description": "List of IDs of completed English lessons"
+        },
+        "lastActiveDate": {
+          "type": "string",
+          "description": "The last day the user completed an action"
+        },
+        "subscriptionStatus": {
+          "type": "string",
+          "enum": ["Inactivo", "Pendente", "Activo", "Rejeitado"],
+          "description": "The current billing/membership state of the subscriber"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the user registered their account"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the user profile was last updated"
+        },
+        "masteredWords": {
+          "type": "array",
+          "description": "List of English words that have been mastered (reached Leitner box 5)"
+        },
+        "whatsappNumber": {
+          "type": "string",
+          "description": "The optional WhatsApp phone number in E.164 format, e.g. +258..."
+        },
+        "whatsappNotificationsEnabled": {
+          "type": "boolean",
+          "description": "Whether the user opted in to daily WhatsApp reminders and word of the day"
+        },
+        "lastWhatsappNotifiedDate": {
+          "type": "string",
+          "description": "The last day a WhatsApp notification was successfully dispatched"
+        }
+      },
+      "required": ["userId", "name", "level", "learningGoal", "xp", "streak", "completedLessons", "createdAt", "updatedAt"]
+    },
+    "PaymentSubmission": {
+      "title": "PaymentSubmission",
+      "description": "Manual proof of payment submitted by users for member validation",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "userContact": {
+          "type": "string"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "enum": ["M-Pesa", "E-Mola", "BIM"]
+        },
+        "reference": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["Pendente", "Aprovado", "Rejeitado"]
+        },
+        "rejectionReason": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["userId", "userName", "userContact", "paymentMethod", "reference", "status", "createdAt", "updatedAt"]
+    },
+    "StudyGroup": {
+      "title": "StudyGroup",
+      "description": "A study group created by learners for collaborative practice",
+      "type": "object",
+      "properties": {
+        "groupId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "levelFocus": {
+          "type": "string"
+        },
+        "creatorId": {
+          "type": "string"
+        },
+        "creatorName": {
+          "type": "string"
+        },
+        "memberCount": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["groupId", "name", "description", "levelFocus", "creatorId", "creatorName", "memberCount", "createdAt", "updatedAt"]
+    },
+    "GroupMember": {
+      "title": "GroupMember",
+      "description": "User membership association in a study group",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "joinedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["userId", "name", "role", "joinedAt"]
+    },
+    "GroupMessage": {
+      "title": "GroupMessage",
+      "description": "A message sent inside a study group",
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string"
+        },
+        "senderId": {
+          "type": "string"
+        },
+        "senderName": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "audioUrl": {
+          "type": "string"
+        },
+        "audioDuration": {
+          "type": "number"
+        },
+        "audioSize": {
+          "type": "number"
+        },
+        "reports": {
+          "type": "array"
+        },
+        "isReported": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["messageId", "senderId", "senderName", "text", "isReported", "createdAt"]
+    },
+    "InspirationCard": {
+      "title": "InspirationCard",
+      "description": "Visual scenic cards with bite-sized English vocabulary, rules or common mistakes",
+      "type": "object",
+      "properties": {
+        "cardId": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["Vocabulário", "Erro Comum", "Dica de Inglês"]
+        },
+        "englishContent": {
+          "type": "string"
+        },
+        "portugueseTranslation": {
+          "type": "string"
+        },
+        "pronunciation": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["cardId", "imageUrl", "category", "englishContent", "portugueseTranslation", "createdAt", "updatedAt"]
+    },
+    "Certificate": {
+      "title": "Certificate",
+      "description": "Stores completion certificate for users completing the full program",
+      "type": "object",
+      "properties": {
+        "certificateId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "uniqueCode": {
+          "type": "string"
+        },
+        "completedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["certificateId", "userId", "userName", "uniqueCode", "completedAt"]
+    },
+    "GroupChallengeResponse": {
+      "title": "GroupChallengeResponse",
+      "description": "Stores user responses to weekly speaking/writing challenges in study groups",
+      "type": "object",
+      "properties": {
+        "responseId": {
+          "type": "string"
+        },
+        "groupId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "userName": {
+          "type": "string"
+        },
+        "prompt": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "audioUrl": {
+          "type": "string"
+        },
+        "audioDuration": {
+          "type": "number"
+        },
+        "audioSize": {
+          "type": "number"
+        },
+        "reactions": {
+          "type": "object",
+          "description": "Map of emoji reactions to list of voter userIds"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["responseId", "groupId", "userId", "userName", "prompt", "createdAt"]
+    },
+    "VocabularyProgress": {
+      "title": "VocabularyProgress",
+      "description": "Tracks spaced repetition boxes and review intervals for vocabulary",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "words": {
+          "type": "object",
+          "description": "A map of word keys to their box progress and review dates"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["userId", "words", "updatedAt"]
+    },
+    "LessonRecording": {
+      "title": "LessonRecording",
+      "description": "User voice recording metadata from Speaking Challenges / Prática Real tasks",
+      "type": "object",
+      "properties": {
+        "recordingId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "lessonId": {
+          "type": "string"
+        },
+        "lessonTitle": {
+          "type": "string"
+        },
+        "speakingPrompt": {
+          "type": "string"
+        },
+        "audioUrl": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "integer"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["recordingId", "userId", "lessonId", "lessonTitle", "speakingPrompt", "audioUrl", "duration", "createdAt"]
+    },
+    "ClubSettings": {
+      "title": "ClubSettings",
+      "description": "Global customization and branding configurations for the club",
+      "type": "object",
+      "properties": {
+        "logoUrl": {
+          "type": "string",
+          "description": "Custom uploaded club logo URL"
+        },
+        "mascotImages": {
+          "type": "object",
+          "description": "Custom uploaded mascot expression URLs"
+        },
+        "lessonImages": {
+          "type": "object",
+          "description": "Custom lesson background image configurations mapped by lesson ID"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["logoUrl"]
+    }
+  },
+  "firestore": {
+    "/clubSettings/{settingId}": {
+      "schema": "ClubSettings",
+      "description": "Stores club-wide settings and visual identity profiles"
+    },
+    "/lessonRecordings/{recordingId}": {
+      "schema": "LessonRecording",
+      "description": "Stores user voice recordings from Speaking Challenges tagged with lesson metadata"
+    },
+    "/vocabularyProgress/{userId}": {
+      "schema": "VocabularyProgress",
+      "description": "Stores vocabulary spaced repetition boxes and review timetables for Leitner system"
+    },
+    "/certificates/{certificateId}": {
+      "schema": "Certificate",
+      "description": "Stores public verifiable certificates of program completion and academic status"
+    },
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Stores user profiles and real-time synchronized progress of each learner"
+    },
+    "/paymentSubmissions/{userId}": {
+      "schema": "PaymentSubmission",
+      "description": "User manual subscription submissions for approval"
+    },
+    "/groups/{groupId}": {
+      "schema": "StudyGroup",
+      "description": "Stores study groups"
+    },
+    "/groups/{groupId}/members/{userId}": {
+      "schema": "GroupMember",
+      "description": "Stores memberships of study groups"
+    },
+    "/groups/{groupId}/messages/{messageId}": {
+      "schema": "GroupMessage",
+      "description": "Stores group messages"
+    },
+    "/groups/{groupId}/challengeResponses/{responseId}": {
+      "schema": "GroupChallengeResponse",
+      "description": "Stores weekly challenge speaking and writing responses from group members"
+    },
+    "/inspirationCards/{cardId}": {
+      "schema": "InspirationCard",
+      "description": "Stores scenic cards combining beautiful views and bite-sized learning content"
+    }
+  }
+}

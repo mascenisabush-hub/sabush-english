@@ -1,0 +1,6 @@
+{
+  "name": "Sabush English Club",
+  "description": "Uma plataforma móvel e acessível para adultos em Moçambique aprenderem inglês do zero à fluência com suporte de Tutor de IA.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

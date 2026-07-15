@@ -1,0 +1,377 @@
+=== BEGINNER LESSONS ===
+L1 [beg-1]: "Hello! What is your name?" / "Olá! Qual é o seu nome?"
+   Vocab: Hello (Olá), Hi (Oi (mais informal)), My name is... (O meu nome é...), What is your name? (Qual é o seu nome?), I am... (Eu sou...)
+   Intro: Bem-vindo ao Sabush! Vamos começar do absoluto zero. Você aprenderá como dizer "Olá" e como se apresentar de forma educada....
+   Speaking Prompt: Imagine you just arrived at Maputo Airport and met a new business partner. Record yourself introducing your name and saying "Nice to meet you!" using the vocabulary of this lesson.
+   Listening: No
+
+L2 [beg-2]: "How are you?" / "Como está / Como vais?"
+   Vocab: How are you? (Como está? / Como vais?), I am fine (Estou bem), Thank you (Obrigado / Obrigada), And you? (E você? / E tu?), Good (Bom / Bem)
+   Intro: Para manter uma conversa agradável, saber perguntar se a outra pessoa está bem e responder educadamente é essencial....
+   Speaking Prompt: None
+   Listening: No
+
+L3 [beg-3]: "Where are you from?" / "De onde você é?"
+   Vocab: Where are you from? (De onde você é / és?), I am from... (Eu sou de...), Mozambique (Moçambique), Canada (Canadá), City (Cidade)
+   Intro: Moçambique acolhe pessoas de todo o mundo. Aprenda a perguntar a nacionalidade de alguém e a dizer com orgulho de onde você é....
+   Speaking Prompt: None
+   Listening: No
+
+L4 [beg-4]: "Good morning & Greetings" / "Bom dia e as Saudações do Dia"
+   Vocab: Good morning (Bom dia (até às 12h)), Good afternoon (Boa tarde (das 12h às 18h)), Good evening (Boa noite (ao chegar / anoitecer)), Good night (Boa noite (ao despedir-se / ir dormir)), Goodbye (Adeus / Tchau)
+   Intro: Dependendo da hora do dia, usamos cumprimentos diferentes em inglês. Vamos aprender "Bom dia", "Boa tarde" e "Boa noite"....
+   Speaking Prompt: None
+   Listening: No
+
+L5 [beg-5]: "Please and Thank You" / "Por Favor e Obrigado (Cortesia)"
+   Vocab: Please (Por favor), Thank you (Obrigado / Obrigada), Excuse me (Com licença / Desculpe-me), Sorry (Desculpe (por um erro)), You are welcome (De nada / Não há de quê)
+   Intro: A cortesia profissional e pessoal é altamente valorizada. Aprenda a usar "Por favor", "Obrigado" e "Com licença" em inglês....
+   Speaking Prompt: None
+   Listening: No
+
+L6 [beg-6]: "The English Alphabet" / "O Alfabeto e a Soletração"
+   Vocab: A, B, C (Som: /Êi/, /Bí/, /Sí/), E, G, H (Som: /Íi/, /Djí/, /Eitch/), I, J, K (Som: /Ái/, /Djei/, /Kei/), O, R, S (Som: /Ôu/, /Ár/, /Es/), To spell (Soletrar)
+   Intro: Saber soletrar seu nome e endereços de correio eletrónico (e-mail) é importantíssimo nas comunicações profissionais. Vamos praticar os sons das letras...
+   Speaking Prompt: None
+   Listening: No
+
+L7 [beg-7]: "Numbers 1 to 10" / "Os Números do 1 ao 10"
+   Vocab: One, Two, Three (1, 2, 3), Four, Five (4, 5), Six, Seven, Eight (6, 7, 8), Nine, Ten (9, 10), Number (Número)
+   Intro: Falar de quantidades, números de telefone, balcões ou tarifas requer domínio absoluto dos números de base 1 a 10....
+   Speaking Prompt: None
+   Listening: No
+
+L8 [beg-8]: "Numbers 11 to 100" / "Números do 11 ao 100 (Dinheiro e Idades)"
+   Vocab: Eleven, Twelve (11, 12), Thirteen, Fourteen (13, 14), Twenty, Thirty (20, 30), Fifty, One Hundred (50, 100), Years old (Anos de idade)
+   Intro: Para lidar com compras, salários ou contar meticais e dólares com investidores, avance agora para os números de 11 a 100....
+   Speaking Prompt: None
+   Listening: No
+
+L9 [beg-9]: "Spelling Emails & Names" / "Soletrando E-mails e Nomes no Trabalho"
+   Vocab: At (@) (Arroba), Dot (.) (Ponto), Hyphen (-) (Hífen / Traço), Underscore (_) (Traço inferior / Underscore), Email address (Endereço de e-mail)
+   Intro: No escritório, ditar o e-mail ou o endereço Web requer o uso de termos técnicos como "ponto" (dot) ou "arroba" (at). Vamos dominá-los....
+   Speaking Prompt: None
+   Listening: No
+
+L10 [beg-10]: "Plurals & Counting Items" / "Plurais e Contagem de Itens"
+   Vocab: Book / Books (Livro / Livros), Phone / Phones (Telemóvel / Telemóveis), Office (Escritório), How many? (Quantos / Quantas?), Many (Muitos / Muitas)
+   Intro: Para lidar com stock, faturas ou balanços simples de comércio, aprenda como funciona o plural no inglês de base....
+   Speaking Prompt: None
+   Listening: No
+
+L11 [beg-11]: "The Verb "To Be" - Part 1" / "O Verbo To Be: I e You (Eu e Tu/Você)"
+   Vocab: I (Eu (Pronome)), You (Tu / Você / Vocês), I am... (Eu sou / Eu estou...), You are... (Tu és / Tu estás / Você é...), Student (Estudante / Aluno)
+   Intro: O verbo "To Be" traduz-se por "ser" ou "estar" em português. É o verbo mais importante do inglês. Vamos aprender "I am" e "You are"....
+   Speaking Prompt: None
+   Listening: No
+
+L12 [beg-12]: "The Verb "To Be" - Part 2" / "Verbo To Be: He, She, It, We, They"
+   Vocab: He / She / It (Ele / Ela / Isto ou Coisas), We / They (Nós / Eles ou Elas), He is / She is / It is (Ele é-está / Ela é-está / Isso é-está), We are / They are (Nós somos-estamos / Eles são-estão), Co-workers (Colegas de trabalho)
+   Intro: Agora que dominas "I" e "You", vamos aprender os pronomes da terceira pessoa e no plural (ele, ela, isso, nós e eles)....
+   Speaking Prompt: None
+   Listening: No
+
+L13 [beg-13]: "The Verb "To Have" (Possessão)" / "O Verbo To Have (Ter / Possuir)"
+   Vocab: I have (Eu tenho), You have (Tu tens / Você tem), He / She / It has (Ele / Ela tem (singular especial)), We / They have (Nós temos / Eles têm), Money (Dinheiro)
+   Intro: O verbo "To Have" expressa o que você possui (um cargo, um telefone, dinheiro ou um tempo de pausa). Vamos aprender no básico....
+   Speaking Prompt: None
+   Listening: No
+
+L14 [beg-14]: "Regular Actions with Common Verbs" / "Ações Diárias com Verbos Comuns"
+   Vocab: To work (Trabalhar), To speak (Falar), To study (Estudar), To live (Viver / Morar), Every day (Todos os dias)
+   Intro: Para dialogar com colegas internacionais o que você faz diariamente, aprenda verbos fundamentais: trabalhar, falar, estudar e viver....
+   Speaking Prompt: None
+   Listening: No
+
+L15 [beg-15]: "Do you speak English? (Questions)" / "Perguntas e Negativas Curtas"
+   Vocab: Do you...? (Você...? (Auxiliar de pergunta)), No, I do not (Não, eu não (Resposta curta)), Yes, I do (Sim, eu faço/falo (Resposta curta)), Not (Não (Modificador de negação)), To understand (Compreender / Entender)
+   Intro: Aprenda a fazer perguntas no presente com o auxiliar "Do" e a responder negativamente dizendo "I do not" (eu não)....
+   Speaking Prompt: None
+   Listening: No
+
+L16 [beg-16]: "Asking for Help & Directions" / "Pedindo Ajuda e Informação de Direções"
+   Vocab: Help (Ajuda / Socorro), Where is...? (Onde fica / Onde está...?), The market (O mercado), The bus stop (A paragem de autocarro / chapa), Here / There (Aqui / Ali ou Lá)
+   Intro: Saber como perguntar onde fica um local e pedir ajuda pode salvar o seu dia no turismo ou quando lidamos com motoristas e passageiros noutros países....
+   Speaking Prompt: None
+   Listening: No
+
+L17 [beg-17]: "Shopping at the Market" / "Comprando no Mercado (Comércio)"
+   Vocab: How much? (Quanto custa?), Bargain / Price (Negociar preço / Preço), This (Este / Esta / Isto (junto de mim)), That (Aquele / Aquela (longe de mim)), Meticais / Dollars (Meticais / Dólares)
+   Intro: Para fechar vendas com clientes estrangeiros ou comprar suprimentos no mercado, domine expressões básicas de compra....
+   Speaking Prompt: None
+   Listening: No
+
+L18 [beg-18]: "Buying Drinks & Food" / "Pedindo Comida e Bebida em Restaurantes"
+   Vocab: Water (Água), Coffee (Café), I would like... (Eu gostaria de...), The bill, please (A conta, por favor (em mesa)), Food (Comida / Alimento)
+   Intro: Restaurantes, lanchonetes e hotéis são locais excelentes para usar as suas primeiras interações educadas de pedidos de comida e de água....
+   Speaking Prompt: None
+   Listening: No
+
+L19 [beg-19]: "Days of the Week" / "Os Dias da Semana"
+   Vocab: Monday (Segunda-feira), Wednesday (Quarta-feira (difícil pronunciar!)), Friday (Sexta-feira (dia de lazer!)), Saturday / Sunday (Sábado / Domingo (fim de semana)), Week (Semana)
+   Intro: Para agendar reuniões, saber que dias você trabalha ou estuda, confira os nomes dos dias de segunda a domingo....
+   Speaking Prompt: None
+   Listening: No
+
+L20 [beg-20]: "Telling Time (Horas básicas)" / "Dizendo as Horas no Quotidiano"
+   Vocab: What time is it? (Que horas são?), It is... o'clock (São... horas em ponto), Half past... (E meia (meia hora depois de)), Time (Tempo / Hora), AM / PM (Manhã (AM) / Tarde ou Noite (PM))
+   Intro: Para não se atrasar no embarque de barcos ou transportes, ou chegar a tempo às suas entrevistas de emprego, aprenda a falar as horas práticas....
+   Speaking Prompt: None
+   Listening: No
+
+L21 [beg-21]: "Talking about Family" / "A Minha Família"
+   Vocab: Father / Mother (Pai / Mãe), Brother / Sister (Irmão / Irmã), Children (Filhos / Crianças (plural)), Son / Daughter (Filho / Filha), Family (Família)
+   Intro: Saber falar da família ajuda a construir conexões humanas profundas com novos colegas e parceiros comerciais de outros países....
+   Speaking Prompt: None
+   Listening: No
+
+L22 [beg-22]: "Daily Routine" / "Minha Rotina Diária"
+   Vocab: To wake up (Acordar / Despertar), To go to work (Ir trabalhar / Ir para o trabalho), To eat breakfast (Tomar o pequeno-almoço), To go home (Ir para casa / Regressar a casa), To sleep (Dormir)
+   Intro: Aprenda verbos essenciais para descrever a sua rotina habitual de trabalho de manhã à noite....
+   Speaking Prompt: None
+   Listening: No
+
+L23 [beg-23]: "Free Time & Lazer Vocabulary" / "Tempo Livre e Hobbies"
+   Vocab: Free time (Tempo livre / Folga), To play soccer (Jogar futebol (bola)), To listen to music (Ouvir música), To go to church (Ir à igreja), To watch TV (Ver televisão)
+   Intro: Diga aos seus novos amigos estrangeiros de que forma gosta de aproveitar o seu fim de semana e os momentos de folga....
+   Speaking Prompt: None
+   Listening: No
+
+L24 [beg-24]: "Common Offices & Jobs" / "Profissões Comuns do Dia-a-dia"
+   Vocab: Manager (Gestor(a) / Diretor(a)), Driver (Motorista / Condutor), Security guard (Guarda / Agente de segurança), Job (Emprego / Trabalho), Company (Empresa / Companhia)
+   Intro: Falar sobre o seu cargo profissional ou as funções de outras pessoas do escritório ajuda muito nas trocas de rede comercial....
+   Speaking Prompt: None
+   Listening: No
+
+L25 [beg-25]: "Final Review: Complete Conversation" / "Revisão Final: Conversa Real Completa"
+   Vocab: I speak English (Eu falo inglês), My level is... (O meu nível é...), Club (Clube / Comunidade de apoio), To speak well (Falar bem), See you next time! (Até à próxima / Vemo-nos de seguida!)
+   Intro: Parabéns! Você chegou à última lição do nível Iniciante do Sabush English Club. Vamos unir todas as peças numa conversa real fluida!...
+   Speaking Prompt: None
+   Listening: No
+
+
+=== INTERMEDIATE LESSONS ===
+L1 [int-1]: "U1-L1: My Career Journey (Past & Present)" / "U1-L1: O Meu Percurso (Passado e Presente)"
+   Vocab: Career path (Caminho / Trajetória de carreira), To resume (Retomar), Currently (Atualmente (Falso Amigo! Não significa "correntemente")), Previous (Anterior), To join (Juntar-se / Entrar para (uma empresa/clube))
+   Intro: To build fluency, you must learn to compare your past career experiences with your current job. This lesson helps you move smoothly between Past Simpl...
+   Speaking Prompt: None
+   Listening: Yes
+
+L2 [int-2]: "U1-L2: Deadlines & Next Steps (Present & Future)" / "U1-L2: Prazos e Próximos Passos (Presente e Futuro)"
+   Vocab: Deadline (Prazo limite / Data de entrega), Deliverables (Entregáveis / Resultados), To catch up (Colocar o assunto em dia), Urgent (Urgente), Next steps (Próximos passos)
+   Intro: Negotiating timelines in English is critical for professional confidence. Here we practice Present Continuous for scheduled future actions and "will" ...
+   Speaking Prompt: None
+   Listening: Yes
+
+L3 [int-3]: "U1-L3: Major Achievements (The Present Perfect)" / "U1-L3: Grandes Conquistas (O Present Perfect)"
+   Vocab: To achieve (Alcançar / Conquistar), So far (Até agora / Até o momento), Major milestone (Marco importante), Overseas (No estrangeiro / Mar além), To coordinate (Coordenar)
+   Intro: To talk about your life and career history without stating the exact date, English uses the Present Perfect (Have/Has + Past Participle). This is vita...
+   Speaking Prompt: None
+   Listening: Yes
+
+L4 [int-4]: "U1-L4: Habits vs Sudden Events (Past Simple vs Past Continuous)" / "U1-L4: Hábitos vs Eventos Súbitos (Passado Contínuo)"
+   Vocab: While (Enquanto), Suddenly (De repente / Súbitamente), Power outage (Corte de energia / Apagão), To save (Salvar / Guardar (documentos)), To crash (Travar / Parar de funcionar (computador/software))
+   Intro: Learn how to describe and explain incidents or situations where a continuous action in the past was interrupted by a sudden event....
+   Speaking Prompt: None
+   Listening: No
+
+L5 [int-5]: "U1-L5: Negotiating Contracts (Will vs Going To)" / "U1-L5: Negociar Próximos Passos (Will vs Going To)"
+   Vocab: Proposal (Proposta / Oferecimento), Agreement (Acordo / Contrato assinado), To sign (Assinar), To provide (Fornecer / Prover), As soon as possible (O mais rápido possível (ASAP))
+   Intro: Master the subtle difference between structured intentions (going to) and promises or immediate resolutions (will) during business negotiation chats....
+   Speaking Prompt: None
+   Listening: No
+
+L6 [int-6]: "U2-L1: Hit the Ground Running (Work Idioms)" / "U2-L1: Entrar com Tudo (Expressões de Trabalho)"
+   Vocab: To hit the ground running (Começar com energia e sem hesitar / Entrar com tudo), To wrap up (Concluir / Finalizar (tarefa, reunião)), On the same page (Em total sintonia / sintonizados), To think outside the box (Pensar de forma inovadora/fora da caixa)
+   Intro: To understand colleagues from across the globe, you need idioms. These phrases sound strange if translated word-by-word, but carry powerful career mea...
+   Speaking Prompt: None
+   Listening: No
+
+L7 [int-7]: "U2-L2: On the Fly (Travel & Airport Expressions)" / "U2-L2: No Improviso (Expressões de Viagens)"
+   Vocab: On the fly (De improviso / Feito rapidamente sem planejamento), To catch a flight (Apanhar um voo), Touch and go (Situação incerta / arriscada), Safe travels! (Boa viagem! / Viagem segura!)
+   Intro: International business involves travel. Discover practical travel idioms that go beyond standard phrasebooks....
+   Speaking Prompt: None
+   Listening: No
+
+L8 [int-8]: "U2-L3: Going Viral (Social Media & Tech Idioms)" / "U2-L3: Viralizar (Internet e Redes Sociais)"
+   Vocab: To go viral (Viralizar nas redes), To stream (Transmitir / Assistir em fluxo contínuo), Clickbait (Título iscador / Caça-clique), Trending topic (Assunto do momento)
+   Intro: Everyone is sharing files online! Learn modern digital and social media expressions that are native to corporate and conversational English today....
+   Speaking Prompt: None
+   Listening: No
+
+L9 [int-9]: "U2-L4: Speak of the Devil (Social Dialogue)" / "U2-L4: Falar no Diabo (Expressões Sociais)"
+   Vocab: Speak of the devil (Falar no diabo (e ele aparecer)), To pull someone's leg (Brincar ou fazer piada com alguém / Troçar), A piece of cake (Estar papado / Ser uma papa / Muito fácil), To cost an arm and a leg (Custar os olhos da cara / Muito caro)
+   Intro: To chat informally over coffee or during corporate lunch breaks, native speakers use lively conversational templates....
+   Speaking Prompt: None
+   Listening: No
+
+L10 [int-10]: "U2-L5: In the Loop (Business Idioms)" / "U2-L5: Por Dentro de Tudo (Idiomas de Negócios)"
+   Vocab: To keep in the loop (Manter alguém informado / Por dentro de tudo), To touch base (Fazer um contacto breve para combinar coisas), Call it a day (Dar o dia por terminado / Parar de trabalhar por hoje), Under the weather (Indisposto / Ligeiramente doente ou murcho)
+   Intro: Stay updated and communicate professionally. We will study expressions that describe keeping people updated or working together....
+   Speaking Prompt: None
+   Listening: No
+
+L11 [int-11]: "U3-L1: Professional Openings & Closings" / "U3-L1: Aberturas e Fechos de E-mail Formais"
+   Vocab: Dear <Name> (Prezado / Caro <Nome> (Abertura formal)), I hope this email finds you well (Espero que este e-mail o/a encontre bem (Abertura nativa comum)), Best regards (Atenciosamente / Com os melhores cumprimentos (Fecho formal)), Sincerely (Sinceramente / Respeitosamente)
+   Intro: To write to international organizations or companies, you must avoid bad literal translations from Portuguese. Master professional openers and closure...
+   Speaking Prompt: None
+   Listening: No
+
+L12 [int-12]: "U3-L2: Polite Requests & Follow-ups" / "U3-L2: Pedidos Educados e Seguimento"
+   Vocab: Could you please...? (Poderia, por favor...?), I would appreciate it if... (Eu apreciaria / ficaria grato se...), To follow up on (Dar seguimento a / Acompanhar o status de), Status update (Atualização de situação / status)
+   Intro: Asking for updates in English requires politeness. If you say "I want you to send...", it sounds aggressive and demanding. Learn elegant, soft request...
+   Speaking Prompt: None
+   Listening: No
+
+L13 [int-13]: "U3-L3: Scheduling & Rescheduling Meetings" / "U3-L3: Agendar e Adiar Reuniões por E-mail"
+   Vocab: To schedule (Agendar / Programar uma reunião), To reschedule (Remarcar / Reagendar), Are you available? (Estás disponível?), To postpone (Adiar), Conflict (Conflito de horários / compromissos)
+   Intro: Learn how to propose meeting dates, check availability, or politely ask to reschedule when an emergency occurs....
+   Speaking Prompt: None
+   Listening: No
+
+L14 [int-14]: "U3-L4: Apologizing for Delays & Issues" / "U3-L4: Desculpar-se por Atrasos e Falhas"
+   Vocab: I apologize for the delay (Peço imensas desculpas pelo atraso), Slight delay (Ligeiro atraso), Thank you for your patience (Obrigado pela sua paciência), Oversight (Descuido / Lapso involuntário), Resolution (Resolução / Solução definitiva)
+   Intro: Apologizing for delays is a common scenario. Doing it with elegance in business English maintains clients trust and retains respect....
+   Speaking Prompt: None
+   Listening: No
+
+L15 [int-15]: "U3-L5: Fast Messaging Slang & Abbreviations (WhatsApp/Slack)" / "U3-L5: Mensagens Rápidas e Abreviaturas Informais"
+   Vocab: FYI (Para sua informação / Para vosso conhecimento), BTW (Por sinal / A propósito / Já agora), ETA (Tempo Estimado de Chegada (Carga ou Pessoa)), EOD (Até ao final do dia (End of Day)), TBD (A ser determinado / A definir)
+   Intro: Modern work communication is fast. Discover core business abbreviations encountered daily in digital chats, emails, and channels....
+   Speaking Prompt: None
+   Listening: No
+
+L16 [int-16]: "U4-L1: False Cognates (Actually vs Currently)" / "U4-L1: Falsos Amigos (Pretend, Actually e Outros)"
+   Vocab: Actually (Na verdade / O facto é que (Falso Cognato de Atualmente)), To pretend (Fingir (Falso Cognato de Pretender)), To intend (Pretender / Ter intenção de), Prejudice (Preconceito (Falso Cognato de Prejuízo)), Damage / Loss (Prejuízo financeiro / Danos)
+   Intro: Portuguese and English share Latin origins, but several words are false friends! Master the ones that cause issues in interviews and professional meet...
+   Speaking Prompt: None
+   Listening: No
+
+L17 [int-17]: "U4-L2: Prepositions: IN, ON, AT" / "U4-L2: Domínio das Preposições: IN, ON, AT"
+   Vocab: In Maputo / In 2026 (Em Maputo / Em 2026 (Grandes dimensões / tempos amplos)), On Monday / On the table (Na segunda-feira / Sobre a mesa (Dias específicos / superfícies)), At 10 AM / At the office (Às 10:00 h / No escritório (Ponto exato / Horários))
+   Intro: In Portuguese, "em" covers almost everything. In English, you must divide them correctly by size and precision: IN (general/huge), ON (surface/day), A...
+   Speaking Prompt: None
+   Listening: No
+
+L18 [int-18]: "U4-L3: Word Order (Adjectives First)" / "U4-L3: Ordem de Palavras (Adjetivo Primeiro)"
+   Vocab: Financial report (Relatório financeiro (Foco na ordem)), Experienced manager (Gestor experiente), Excellent proposal (Proposta excelente), Noun (Substantivo / Nome do objeto)
+   Intro: In Portuguese, we write "relatório anual". In English, the descriptive word (adjective) must always stand BEFORE the noun (the item)....
+   Speaking Prompt: None
+   Listening: No
+
+L19 [int-19]: "U4-L4: Doubt vs Question & Replying "De Nada"" / "U4-L4: Question vs Doubt e Responder de Nada"
+   Vocab: I have a question (Tenho uma dúvida / pergunta (Melhor uso)), Doubt (Dúvida (sentido de incerteza / falta de fé)), No worries / My pleasure (De nada / prazer meu (Alternativas modernas a You are Welcome)), To solve (Resolver)
+   Intro: Saying "I have a doubt" to an English speaker makes them think you do not trust them (since doubt = desconfiança em inglês). Learn correct usage of "Q...
+   Speaking Prompt: None
+   Listening: No
+
+L20 [int-20]: "U4-L5: Prepositions for Actions: TO vs FOR" / "U4-L5: Preposições para Ações: TO vs FOR"
+   Vocab: To send TO someone (Enviar PARA alguém (Transferência)), To make FOR someone (Fazer PARA alguém (Benefício / Ajuda)), To study for the exam (Estudar para o exame (Propósito)), Destination (Destino)
+   Intro: One of the most continuous challenges! In general, TO represents destination, motion, or transfer, and FOR represents purpose, benefit, or service....
+   Speaking Prompt: None
+   Listening: No
+
+L21 [int-21]: "U5-L1: Sharing Your Opinions Fluently" / "U5-L1: Partilhar a sua Opinião com Fluência"
+   Vocab: In my opinion... (Na minha opinião...), From my perspective... (Da minha perspectiva / ponto de vista...), To agree completely (Concordar inteiramente), As far as I am concerned... (No que me diz respeito / Do meu ponto de vista...)
+   Intro: To talk in discussion panels or express ideas in corporate alignment rooms, you must vary your speech instead of only saying "I think"....
+   Speaking Prompt: None
+   Listening: No
+
+L22 [int-22]: "U5-L2: Telling or Describing Memories" / "U5-L2: Descrever Experiências e Memórias"
+   Vocab: First of all... (Antes de mais nada / Primeiro de tudo...), After that... (Depois disso / Logo a seguir...), Unforgettable experience (Experiência inesquecível), Eventually (No final / Com o tempo (Falso Cognato! Não significa "eventualmente"))
+   Intro: Learn how to describe past travels, memories, or tell unforgettable stories using narrative markers like "First of all", "After that", and "At the end...
+   Speaking Prompt: None
+   Listening: No
+
+L23 [int-23]: "U5-L3: Giving Advice Politely" / "U5-L3: Dar Conselhos de Forma Elegante"
+   Vocab: Should (Deveria (Conselho amigável geral)), Ought to (Deveria (Variante formal e polida)), If I were you, I would... (Se eu fosse a ti / Se eu estivesse no teu lugar, eu faria...), To consider (Considerar / Pensar sobre a opção)
+   Intro: When giving advice in conversations, avoid being direct. Instead of stating "You must...", use polite helpers: "should", "ought to", or "If I were you...
+   Speaking Prompt: None
+   Listening: No
+
+L24 [int-24]: "U5-L4: Constructive Disagreement in Meetings" / "U5-L4: Discordar com Educação em Reuniões"
+   Vocab: I see your point, but... (Entendo o seu ponto de vista, mas... (Abertura diplomática)), With all due respect... (Com todo o respeito...), That is a fair point, however... (Esse é um argumento justo, porém...), To disagree respectfully (Discordar respeitosamente)
+   Intro: Saying "You are wrong" in a business meeting can make co-workers defensive. Discover how to politely offer alternative pathways using gentle construct...
+   Speaking Prompt: None
+   Listening: No
+
+L25 [int-25]: "U5-L5: Problem Solving & Solutions" / "U5-L5: Resolução de Problemas e Propostas"
+   Vocab: Root cause (Causa raiz / Origem do problema), To solve the issue (Resolver o problema / questão), We propose to... (Propomos... / Sugerimos...), Actionable steps (Passos práticos / acionáveis)
+   Intro: To conclude our Intermediate program, connect problems with resolutions in workshops. Talk about causes, effects, and suggest real actions....
+   Speaking Prompt: None
+   Listening: No
+
+
+=== ADVANCED LESSONS ===
+L1 [adv-1]: "U1-L1: Mastering Registers: Informal Chat vs. Executive Boardroom" / "U1-L1: Domínio de Registos: Conversa Informal vs. Sala de Administração"
+   Vocab: Colloquialism (Coloquialismo / Expressão popular), To project authority (Transmitir / Projetar autoridade), Polished register (Registo polido / Linguagem refinada), To cut corners (Poupar esforços inapropriadamente / Seguir atalhos que prejudicam a qualidade), To leverage (Potencializar / Retirar proveito estratégico de)
+   Intro: To reach corporate fluency, you must effortlessly adapt your tone depending on your audience. This lesson explores the structural differences between ...
+   Speaking Prompt: None
+   Listening: Yes
+
+L2 [adv-2]: "U1-L2: Advanced Idioms of Leadership, Strategy, & Resilience" / "U1-L2: Idiomas Avançados de Liderança, Estratégia e Resiliência"
+   Vocab: To bite the bullet (Encarar uma decisão dolorosa inevitável com coragem / Tomar uma decisão difícil), To read between the lines (Ler nas entrelinhas / Perceber o significado implícito), Across the board (De forma geral / Abrangendo todo o espectro ou setores), Out of the loop (Fora do círculo de informação / Desinformado), To shed light on (Clarificar / Trazer luz a um mistério administrativo)
+   Intro: To understand board members, foreign embassy officials, or international development leaders, you must interpret abstract idioms. These express deep s...
+   Speaking Prompt: None
+   Listening: Yes
+
+L3 [adv-3]: "U2-L1: Strategic Risk Analysis and Mixed Conditionals" / "U2-L1: Análise de Risco e Condicionais Mistas"
+   Vocab: Unforeseen circumstances (Circunstâncias imprevistas / de força maior), Hindsight (Retrospetiva / Compreensão tardia (com o benefício do passado)), In retrospect (Olhando para trás / Em retrospetiva), Risk mitigation (Mitigação / Redução de riscos), To overhaul (Reestruturar completamente / Reformar profundamente)
+   Intro: Mastering mixed conditionals allows you to analyze how past errors or historical decisions shape present realities. It is the language of risk mitigat...
+   Speaking Prompt: None
+   Listening: Yes
+
+L4 [adv-4]: "U2-L2: Corporate Diplomacy and Strategic Passive Voice" / "U2-L2: Diplomacia Corporativa e Voz Passiva Estratégica"
+   Vocab: Objective stance (Postura objetiva / Neutra), Discrepancy (Divergência / Discrepância / Erro nos números), To be deemed (Ser considerado / Julgado como), Omission (Omissão / Lapso de preenchimento), Unbiased report (Relatório imparcial / Sem viés)
+   Intro: In international negotiations and press releases, active blaming can break alliances. High-level professionals use the agents-deleted Passive Voice to...
+   Speaking Prompt: None
+   Listening: No
+
+L5 [adv-5]: "U2-L3: High-Stakes Briefing & Reported Speech" / "U2-L3: Relatórios de Alto Nível e Discurso Indireto"
+   Vocab: To assert (Asseverar / Afirmar categoricamente), To concede (Conceder / Admitir (frequentemente contra a própria vontade)), To urge (Exortar / Instar com veemência), Minutes (Atas de reunião (Falso amigo! Não indica apenas tempo)), Allegation (alegação / Afirmação sem prova definitiva)
+   Intro: To brief board members or write minutes, you must convey other stakeholders' statements with absolute precision. Relying on basic reporting verbs like...
+   Speaking Prompt: None
+   Listening: No
+
+L6 [adv-6]: "U3-L1: Global Trade, Deep Ports, and Regional Integration" / "U3-L1: Comércio Global, Portos de Águas Profundas e Integração Regional"
+   Vocab: Inflationary pressure (Pressão inflacionária), Foreign direct investment (Investimento directo estrangeiro (FDI)), Economic diversification (Diversificação económica), Sovereign wealth fund (Fundo soberano), Maritime logistics corridor (Corredor de logística marítima)
+   Intro: This analytical discussion enables you to participate in debates about regional trading networks, macroeconomics, and supply chains. Engage with terms...
+   Speaking Prompt: None
+   Listening: No
+
+L7 [adv-7]: "U3-L2: Masterful Storytelling and Narrative Framing" / "U3-L2: Storytelling Magistral e Enquadramento Narrativo"
+   Vocab: Compelling narrative (Narrativa convincente / cativante), Unbeknownst to... (Sem o conhecimento de... / À revelia de...), Climax (Ápice / Ponto culminante da história), To resonate (Ressoar / Gerar identificação profunda com a audiência), Aesthetic twist (Reviravolta estética / surpresa na trama)
+   Intro: In boardrooms, public speeches, and client acquisitions, facts tell but stories sell. Near-fluent communicators construct emotional arcs using sophist...
+   Speaking Prompt: None
+   Listening: No
+
+L8 [adv-8]: "U3-L3: High-Stake Diplomacy and Safe Contradiction" / "U3-L3: Diplomacia em Reuniões e Contradição Segura"
+   Vocab: With all due respect (Com todo o respeito (Prepara o ouvinte para discordância)), To play devil's advocate (Fazer o papel de advogado do diabo (fazer perguntas difíceis para testar a tese)), Stumbling block (Pedra no caminho / Obstáculo crítico), On a final note (Como reflexão final / Em conclusão), Compromise (Acordo mútuo / Concessão equilibrada (Não significa compromisso social! Falso amigo))
+   Intro: To disagree with directness in an international meeting is often interpreted as aggressive or rude. Learn the linguistic shields used to challenge a c...
+   Speaking Prompt: None
+   Listening: No
+
+L9 [adv-9]: "U4-L1: Strategic Emphasis and Semantic Sentence Stress" / "U4-L1: Ênfase Estratégica e Stress Frásico Semântico"
+   Vocab: Sentence stress (Acento tónico da palavra dentro da frase), Implicit meaning (Significado implícito / oculto), To alternate stress (Alternar a ênfase das palavras para modular o sentido), Auditory contrast (Contraste auditivo para o ouvinte), Acoustic cues (Sinais sonoros de pronúncia)
+   Intro: In advanced English, the words you stress determine what your sentence actually means. By shifting sentence stress, you can highlight different aspect...
+   Speaking Prompt: None
+   Listening: No
+
+L10 [adv-10]: "U4-L2: Connected Speech, Liaison, and Elision in Dialogues" / "U4-L2: Discurso Conectado: Ligações e Elisões no Diálogo"
+   Vocab: Connected speech (Discurso conectado / fala encadeada fluida), Liaison (Ligação / Junção fonética de consoante-vogal), Elision (Elisão / Supressão de sons fonéticos na fala rápida (ex. "nex year" em vez de "next year")), Phonetic blending (Mistura / fusão fonética de vogais e consoantes), Mechanical execution (Execução mecânica / fala robotizada)
+   Intro: Many advanced learners speak grammatically flawless English but sound artificial because they pronounce every single word in isolation. Fluid speakers...
+   Speaking Prompt: None
+   Listening: No
+
+L11 [adv-11]: "U5-L1: Strategic Cohesion in Argumentative Essays & Proposals" / "U5-L1: Coesão Estratégica em Ensaios Argumentativos e Propostas"
+   Vocab: Cohesive devices (Elementos de coesão / Conetores lógicos), Notwithstanding (Não obstante / Apesar de), Furthermore (Além disso / Adicionalmente), In light of this (Diante disto / Tendo isto em consideração), To substantiate (Substanciar / Fundamentar com dados e provas)
+   Intro: To write proposals that convince corporate investors or secure international development research grants, you must master logical structuring and cohe...
+   Speaking Prompt: None
+   Listening: No
+
+L12 [adv-12]: "U5-L2: High-Stakes Public Presentations & Fielding Difficult Q&As" / "U5-L2: Apresentações Públicas de Alto Nível e Como Responder a Perguntas Difíceis"
+   Vocab: Fielding difficult questions (Responder a perguntas difíceis com segurança), Value proposition (Proposta de valor (benefício crítico oferecido aos investidores)), To get sidetracked (Desviar-se do tema principal / perder o foco), To bridge (Fazer a ponte (conectar uma pergunta hostil de volta ao seu argumento forte)), Call to action (Chamada para ação / fecho persuasivo de impacto)
+   Intro: The ultimate showcase of fluency is the ability to present complex proposals with executive presence and handle critical, unexpected audience cross-ex...
+   Speaking Prompt: None
+   Listening: No
+

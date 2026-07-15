@@ -1,0 +1,399 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() 
+        && request.auth.token.email == 'sabushagency@gmail.com' 
+        && request.auth.token.email_verified == true;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isGroupMember(groupId) {
+      return exists(/databases/$(database)/documents/groups/$(groupId)/members/$(request.auth.uid));
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidUserProfile(data, forAdmin) {
+      return data.userId is string 
+        && (forAdmin || data.userId == request.auth.uid)
+        && data.name is string 
+        && data.name.size() <= 100
+        && (!('level' in data) || (data.level is string && (data.level == 'beginner' || data.level == 'intermediate' || data.level == 'advanced')))
+        && (!('learningGoal' in data) || (data.learningGoal is string && data.learningGoal.size() <= 100))
+        && (!('xp' in data) || (data.xp is int && data.xp >= 0))
+        && (!('streak' in data) || (data.streak is int && data.streak >= 0))
+        && (!('completedLessons' in data) || (data.completedLessons is list && data.completedLessons.size() <= 1000))
+        && (!('email' in data) || (data.email is string && data.email.size() <= 150))
+        && (!('phoneNumber' in data) || (data.phoneNumber is string && data.phoneNumber.size() <= 30))
+        && (!('lastActiveDate' in data) || (data.lastActiveDate is string || data.lastActiveDate == null))
+        && (!('whatsappNumber' in data) || (data.whatsappNumber is string && data.whatsappNumber.size() <= 30))
+        && (!('whatsappNotificationsEnabled' in data) || data.whatsappNotificationsEnabled is bool)
+        && (!('lastWhatsappNotifiedDate' in data) || (data.lastWhatsappNotifiedDate is string || data.lastWhatsappNotifiedDate == null))
+        && (!('subscriptionStatus' in data) || (data.subscriptionStatus is string && (data.subscriptionStatus == 'Inactivo' || data.subscriptionStatus == 'Pendente' || data.subscriptionStatus == 'Activo' || data.subscriptionStatus == 'Rejeitado')))
+        && (!('masteredWords' in data) || (data.masteredWords is list && data.masteredWords.size() <= 1000))
+        && (!('createdAt' in data) || data.createdAt is timestamp)
+        && (!('updatedAt' in data) || data.updatedAt is timestamp);
+    }
+
+    match /users/{userId} {
+      allow get, list: if true;
+      
+      allow create: if isSignedIn() 
+        && request.auth.uid == userId 
+        && isValidId(userId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && (incoming().subscriptionStatus == 'Activo' || incoming().subscriptionStatus == 'Inactivo' || incoming().subscriptionStatus == 'Pendente' || !('subscriptionStatus' in incoming()))
+        && isValidUserProfile(incoming(), false);
+      
+      allow update: if isSignedIn() 
+        && (
+          (request.auth.uid == userId 
+           && isValidId(userId)
+           && incoming().updatedAt == request.time
+           && incoming().createdAt == existing().createdAt
+           && incoming().userId == existing().userId
+           && (
+             incoming().subscriptionStatus == existing().subscriptionStatus
+             || incoming().subscriptionStatus == 'Pendente'
+             || isAdmin()
+           )
+           && isValidUserProfile(incoming(), false)
+          ) 
+          || (isAdmin() && incoming().updatedAt == request.time && isValidUserProfile(incoming(), true))
+        );
+        
+      allow delete: if isSignedIn() && (request.auth.uid == userId || isAdmin()) && isValidId(userId);
+    }
+
+    function isValidVocabularyProgress(data) {
+      return data.userId is string
+        && data.userId == request.auth.uid
+        && data.words is map
+        && data.updatedAt is timestamp;
+    }
+
+    match /vocabularyProgress/{userId} {
+      allow get: if isSignedIn() && request.auth.uid == userId;
+      allow create, update: if isSignedIn()
+        && request.auth.uid == userId
+        && isValidId(userId)
+        && incoming().updatedAt == request.time
+        && isValidVocabularyProgress(incoming());
+      allow delete: if isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidPaymentSubmission(data, forAdmin) {
+      return data.userId is string
+        && (forAdmin || data.userId == request.auth.uid)
+        && data.userName is string
+        && data.userName.size() <= 100
+        && data.paymentMethod is string
+        && (data.paymentMethod == 'M-Pesa' || data.paymentMethod == 'E-Mola' || data.paymentMethod == 'BIM')
+        && data.reference is string
+        && data.reference.size() <= 120
+        && (!('note' in data) || (data.note is string && data.note.size() <= 1000))
+        && data.status is string
+        && (data.status == 'Pendente' || data.status == 'Aprovado' || data.status == 'Rejeitado')
+        && (!('rejectionReason' in data) || (data.rejectionReason is string && data.rejectionReason.size() <= 1000))
+        && (!('userContact' in data) || (data.userContact is string && data.userContact.size() <= 150))
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    match /paymentSubmissions/{userId} {
+      allow get: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow list: if isAdmin();
+      
+      allow create: if isSignedIn()
+        && request.auth.uid == userId
+        && isValidId(userId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && incoming().status == 'Pendente'
+        && isValidPaymentSubmission(incoming(), false);
+        
+      allow update: if isSignedIn()
+        && (
+          (request.auth.uid == userId
+           && isValidId(userId)
+           && incoming().updatedAt == request.time
+           && incoming().createdAt == existing().createdAt
+           && incoming().userId == existing().userId
+           && incoming().status == 'Pendente'
+           && (existing().status == 'Pendente' || existing().status == 'Rejeitado' || existing().status == 'Inactivo')
+           && isValidPaymentSubmission(incoming(), false)
+          )
+          || (isAdmin() && incoming().updatedAt == request.time && isValidPaymentSubmission(incoming(), true))
+        );
+        
+      allow delete: if isAdmin();
+    }
+
+    function isValidStudyGroup(data, isCreate) {
+      return data.groupId is string
+        && data.name is string
+        && data.name.size() <= 100
+        && data.description is string
+        && data.description.size() <= 500
+        && data.levelFocus is string
+        && (data.levelFocus == 'Iniciante' || data.levelFocus == 'Intermédio' || data.levelFocus == 'Avançado')
+        && data.creatorId is string
+        && (isCreate ? data.creatorId == request.auth.uid : data.creatorId == existing().creatorId)
+        && data.creatorName is string
+        && data.creatorName.size() <= 100
+        && data.memberCount is int
+        && data.memberCount >= 0
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidGroupMember(data) {
+      return data.userId is string
+        && data.userId == request.auth.uid
+        && data.name is string
+        && data.name.size() <= 100
+        && data.role is string
+        && (data.role == 'Creator' || data.role == 'Member')
+        && data.joinedAt is timestamp;
+    }
+
+    function isValidGroupMessage(data) {
+      return data.messageId is string
+        && data.senderId is string
+        && data.senderId == request.auth.uid
+        && data.senderName is string
+        && data.senderName.size() <= 100
+        && data.text is string
+        && data.text.size() <= 2000
+        && (!('audioUrl' in data) || (data.audioUrl is string && data.audioUrl.size() <= 1000))
+        && (!('audioDuration' in data) || (data.audioDuration is int || data.audioDuration is float))
+        && (!('audioSize' in data) || (data.audioSize is int || data.audioSize is float))
+        && (!('reports' in data) || (data.reports is list && data.reports.size() <= 100))
+        && data.isReported is bool
+        && data.createdAt is timestamp;
+    }
+
+    function isValidChallengeResponse(data) {
+      return data.responseId is string
+        && data.groupId is string
+        && data.userId is string
+        && data.userId == request.auth.uid
+        && data.userName is string
+        && data.userName.size() <= 100
+        && data.prompt is string
+        && data.prompt.size() <= 600
+        && (!('text' in data) || (data.text is string && data.text.size() <= 2000))
+        && (!('audioUrl' in data) || (data.audioUrl is string && data.audioUrl.size() <= 1000))
+        && (!('audioDuration' in data) || (data.audioDuration is int || data.audioDuration is float))
+        && (!('audioSize' in data) || (data.audioSize is int || data.audioSize is float))
+        && (!('reactions' in data) || data.reactions is map)
+        && data.createdAt is timestamp;
+    }
+
+    function isValidInspirationCard(data) {
+      return data.cardId is string
+        && data.imageUrl is string
+        && data.imageUrl.size() <= 2000
+        && data.category is string
+        && (data.category == 'Vocabulário' || data.category == 'Erro Comum' || data.category == 'Dica de Inglês')
+        && data.englishContent is string
+        && data.englishContent.size() <= 1000
+        && data.portugueseTranslation is string
+        && data.portugueseTranslation.size() <= 2000
+        && (!('pronunciation' in data) || (data.pronunciation is string && data.pronunciation.size() <= 1000))
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidClubSettings(data) {
+      return data.logoUrl is string
+        && data.logoUrl.size() <= 2000
+        && (!('mascotImages' in data) || data.mascotImages is map)
+        && (!('lessonImages' in data) || data.lessonImages is map)
+        && (!('updatedAt' in data) || data.updatedAt is timestamp);
+    }
+
+    function isValidCertificate(data) {
+      return data.certificateId is string
+        && data.userId is string
+        && (data.userId == request.auth.uid || isAdmin())
+        && data.userName is string
+        && data.userName.size() <= 100
+        && data.uniqueCode is string
+        && data.uniqueCode.size() <= 30
+        && data.completedAt is timestamp;
+    }
+
+    function isValidLessonRecording(data) {
+      return data.recordingId is string
+        && data.recordingId.size() <= 128
+        && data.userId is string
+        && data.userId == request.auth.uid
+        && data.lessonId is string
+        && data.lessonId.size() <= 100
+        && data.lessonTitle is string
+        && data.lessonTitle.size() <= 200
+        && data.speakingPrompt is string
+        && data.speakingPrompt.size() <= 2000
+        && data.audioUrl is string
+        && data.audioUrl.size() <= 2000
+        && data.duration is int
+        && data.duration >= 0
+        && data.createdAt is timestamp;
+    }
+
+    match /groups/{groupId} {
+      allow get, list: if true;
+      allow create: if isSignedIn()
+        && isValidId(groupId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && isValidStudyGroup(incoming(), true);
+      allow update: if isSignedIn()
+        && isValidId(groupId)
+        && incoming().updatedAt == request.time
+        && incoming().createdAt == existing().createdAt
+        && isValidStudyGroup(incoming(), false)
+        && (
+          request.auth.uid == existing().creatorId
+          || (incoming().diff(existing()).affectedKeys().hasOnly(['memberCount', 'updatedAt']))
+        );
+      allow delete: if isSignedIn() && (request.auth.uid == existing().creatorId || isAdmin());
+    }
+
+    match /groups/{groupId}/members/{userId} {
+      allow get, list: if true;
+      allow create: if isSignedIn()
+        && request.auth.uid == userId
+        && isValidId(userId)
+        && incoming().joinedAt == request.time
+        && isValidGroupMember(incoming());
+      allow delete: if isSignedIn()
+        && (
+          request.auth.uid == userId 
+          || request.auth.uid == get(/databases/$(database)/documents/groups/$(groupId)).data.creatorId
+          || isAdmin()
+        );
+    }
+
+    match /groups/{groupId}/messages/{messageId} {
+      allow get: if isSignedIn() && isGroupMember(groupId);
+      allow list: if isSignedIn() && isGroupMember(groupId);
+      allow create: if isSignedIn()
+        && isGroupMember(groupId)
+        && isValidId(messageId)
+        && incoming().createdAt == request.time
+        && isValidGroupMessage(incoming());
+      allow update: if isSignedIn()
+        && isGroupMember(groupId)
+        && isValidGroupMessage(incoming())
+        && (
+          incoming().diff(existing()).affectedKeys().hasOnly(['reports', 'isReported'])
+          || request.auth.uid == existing().senderId
+          || isAdmin()
+        );
+      allow delete: if isSignedIn()
+        && (
+          (isGroupMember(groupId) && request.auth.uid == existing().senderId)
+          || request.auth.uid == get(/databases/$(database)/documents/groups/$(groupId)).data.creatorId
+          || isAdmin()
+        );
+    }
+
+    match /groups/{groupId}/challengeResponses/{responseId} {
+      allow get: if isSignedIn() && isGroupMember(groupId);
+      allow list: if isSignedIn() && isGroupMember(groupId);
+      allow create: if isSignedIn()
+        && isGroupMember(groupId)
+        && isValidId(responseId)
+        && incoming().createdAt == request.time
+        && isValidChallengeResponse(incoming());
+      allow update: if isSignedIn()
+        && isGroupMember(groupId)
+        && isValidId(responseId)
+        && incoming().createdAt == existing().createdAt
+        && (
+          // Case A: Owner updates their response
+          (request.auth.uid == existing().userId && isValidChallengeResponse(incoming()))
+          ||
+          // Case B: Any group member toggles reactions (core reply fields are immutable)
+          (
+            incoming().responseId == existing().responseId
+            && incoming().groupId == existing().groupId
+            && incoming().userId == existing().userId
+            && incoming().userName == existing().userName
+            && incoming().prompt == existing().prompt
+            && (!('text' in existing()) ? !('text' in incoming()) : incoming().text == existing().text)
+            && (!('audioUrl' in existing()) ? !('audioUrl' in incoming()) : incoming().audioUrl == existing().audioUrl)
+            && (!('audioDuration' in existing()) ? !('audioDuration' in incoming()) : incoming().audioDuration == existing().audioDuration)
+            && (!('audioSize' in existing()) ? !('audioSize' in incoming()) : incoming().audioSize == existing().audioSize)
+            && (!('reactions' in incoming()) || incoming().reactions is map)
+          )
+        );
+      allow delete: if isSignedIn()
+        && (
+          (isGroupMember(groupId) && request.auth.uid == existing().userId)
+          || request.auth.uid == get(/databases/$(database)/documents/groups/$(groupId)).data.creatorId
+          || isAdmin()
+        );
+    }
+
+    match /inspirationCards/{cardId} {
+      allow read: if true;
+      allow create: if isAdmin()
+        && isValidId(cardId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time
+        && isValidInspirationCard(incoming());
+      allow update: if isAdmin()
+        && isValidId(cardId)
+        && incoming().updatedAt == request.time
+        && incoming().createdAt == existing().createdAt
+        && isValidInspirationCard(incoming());
+      allow delete: if isAdmin();
+    }
+
+    match /certificates/{certificateId} {
+      allow get, list: if true;
+      allow create: if isSignedIn()
+        && isValidId(certificateId)
+        && incoming().completedAt == request.time
+        && isValidCertificate(incoming());
+      allow update, delete: if false;
+    }
+
+    match /lessonRecordings/{recordingId} {
+      allow get: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.userId == request.auth.uid;
+      allow create: if isSignedIn()
+        && isValidId(recordingId)
+        && incoming().createdAt == request.time
+        && isValidLessonRecording(incoming());
+      allow update: if false;
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid;
+    }
+
+    match /clubSettings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin()
+        && isValidId(settingId)
+        && isValidClubSettings(incoming());
+    }
+  }
+}

@@ -1,0 +1,50 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Global safety net - Deny all other access by default
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    match /group_audio/{groupId}/{filename} {
+      // 1. Any logged-in user who is a member can upload audio messages (max 5MB)
+      allow write: if request.auth != null 
+        && firestore.exists(/databases/(default)/documents/groups/$(groupId)/members/$(request.auth.uid))
+        && request.resource.size <= 5 * 1024 * 1024;
+      
+      // 2. Any member of the study group can read/download audio files (non-members are denied)
+      allow read: if request.auth != null 
+        && firestore.exists(/databases/(default)/documents/groups/$(groupId)/members/$(request.auth.uid));
+    }
+
+    match /users/{userId}/lessons/{lessonId}/{filename} {
+      // Only the user themselves can read/write their own recordings
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if request.auth != null 
+        && request.auth.uid == userId 
+        && request.resource.size <= 5 * 1024 * 1024;
+    }
+
+    match /inspiration_cards/{filename} {
+      // Admins can upload custom background images
+      allow write: if request.auth != null
+        && request.auth.token.email == 'sabushagency@gmail.com'
+        && request.auth.token.email_verified == true
+        && request.resource.size <= 5 * 1024 * 1024;
+      
+      // Anyone can access these background images publically
+      allow read: if true;
+    }
+
+    match /branding/{filename} {
+      // Admins can upload custom club logos
+      allow write: if request.auth != null
+        && request.auth.token.email == 'sabushagency@gmail.com'
+        && request.auth.token.email_verified == true
+        && request.resource.size <= 5 * 1024 * 1024;
+      
+      // Anyone can access the club logo publicly
+      allow read: if true;
+    }
+  }
+}

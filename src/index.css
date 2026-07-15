@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Cinzel:wght@600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-display: "Cinzel", "Playfair Display", serif;
+
+  --color-brand-navy-50: #f0f4f8;
+  --color-brand-navy-100: #dce4ec;
+  --color-brand-navy-200: #b0bfd4;
+  --color-brand-navy-300: #849bbb;
+  --color-brand-navy-500: #3c548c;
+  --color-brand-navy-600: #1a3064;
+  --color-brand-navy-700: #0f204c;
+  --color-brand-navy-800: #081438;
+  --color-brand-navy-900: #03081c;
+  
+  --color-brand-red-50: #f0f5fa;
+  --color-brand-red-100: #e1edf8;
+  --color-brand-red-200: #c3dbf4;
+  --color-brand-red-300: #9ec2ea;
+  --color-brand-red-400: #7aa6d8;
+  --color-brand-red-500: #4d7eb7;
+  --color-brand-red-650: #2d568c;
+  --color-brand-red-600: #3b69a6;
+  --color-brand-red-700: #224472;
+  --color-brand-red-800: #19345c;
+  --color-brand-red-900: #0f1f38;
+
+  --color-brand-gold-50: #f5f9fe;
+  --color-brand-gold-100: #e7f1fc;
+  --color-brand-gold-200: #d0e4fb;
+  --color-brand-gold-300: #afcffd;
+  --color-brand-gold-400: #8dbbfd;
+  --color-brand-gold-500: #6da1ed;
+  --color-brand-gold-600: #4b85da;
+  --color-brand-gold-700: #2f65b4;
+  --color-brand-gold-800: #1c3f76;
+
+  --animate-fade-in: fade-in 0.25s ease-out;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+@layer utilities {
+  .animate-bounce-short {
+    animation: bounceShort 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes bounceShort {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
