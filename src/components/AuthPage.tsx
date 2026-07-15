@@ -14,8 +14,6 @@ import { EnglishLevel } from '../types';
 
 // @ts-ignore
 import sabushLogoFlags from '../assets/images/sabush_logo_flags_1781360603744.jpg';
-// @ts-ignore
-import sabushBanner from '../assets/images/sabush_banner_1781359379070.jpg';
 
 interface AuthPageProps {
   onAuthSuccess: (userId: string, isNewUser: boolean) => void;
@@ -277,51 +275,58 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
         <div className="w-full max-w-[442px] bg-white rounded-[38px] shadow-[0_24px_70px_rgba(29,62,36,0.06)] overflow-hidden border border-[#CFAC62]/15 flex flex-col relative transition-all duration-300 hover:shadow-[0_32px_90px_rgba(29,62,36,0.09)]">
           
           {/* CURVED ACADEMIA HEADER */}
-          <div className="relative bg-gradient-to-br from-[#153E68] via-[#1D5C97] to-[#2872B5] h-[190px] w-full overflow-hidden border-b border-[#CFAC62]/20 flex flex-col items-center justify-center shrink-0">
+          <div className="relative bg-gradient-to-b from-[#153E68] to-[#1D5C97] h-[210px] w-full overflow-hidden border-b border-[#CFAC62]/20 flex flex-col items-center justify-center shrink-0">
             {/* Subtle decorative gold-toned geometric circle overlays for luxury texture */}
-            <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#CFAC62_1.5px,transparent_1.5px)] [background-size:16px_16px]" />
+            <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(#CFAC62_1.5px,transparent_1.5px)] [background-size:18px_18px]" />
+            <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full border border-[#CFAC62]/25" />
             <div className="absolute -top-12 -left-12 w-40 h-40 bg-gradient-to-br from-[#CFAC62]/15 to-transparent rounded-full blur-2xl" />
             <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-gradient-to-tl from-[#CFAC62]/10 to-transparent rounded-full blur-2xl" />
+
+            {/* Gold hairline above the eyebrow */}
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 w-14 h-px bg-[#CFAC62]/60" />
 
             {/* Premium Typography Badge heading on Dark Header */}
             <div className="text-center z-10 -mt-6 px-4">
               <span className="font-display text-[9px] uppercase tracking-[0.34em] text-[#CFAC62] font-semibold block mb-1 drop-shadow-xs">Bem-vindo ao Prestigiado</span>
-              <h1 className="font-display text-2xl md:text-3xl font-extrabold text-[#FAF9F5] uppercase tracking-[0.08em] drop-shadow-sm select-none">
+              <h1 className="font-display text-3xl md:text-4xl font-extrabold text-[#FAF9F5] uppercase tracking-[0.12em] drop-shadow-sm select-none">
                 SABUSH
               </h1>
-              <span className="text-[#CFAC62]/70 font-serif italic text-xs tracking-wider block mt-0.5">English Club</span>
+              <div className="flex items-center justify-center gap-2 mt-1">
+                <span className="w-4 h-px bg-[#CFAC62]/70 inline-block" />
+                <span className="text-[#CFAC62]/90 font-serif italic text-xs tracking-wider">English Club</span>
+                <span className="w-4 h-px bg-[#CFAC62]/70 inline-block" />
+              </div>
             </div>
             
             {/* Absolute overlapping gold-rimmed medallion container */}
             <div 
               onClick={handleLogoClick}
               title="Clique 5 vezes para alternar opções de desenvolvimento"
-              className="absolute bottom-[-38px] left-1/2 -translate-x-1/2 w-28 h-28 rounded-full border-[3px] border-[#FAF9F5] bg-white shadow-[0_12px_28px_rgba(29,62,36,0.11)] flex flex-col items-center justify-center overflow-hidden p-2.5 z-20 hover:scale-105 hover:border-[#CFAC62] transition-all duration-350 cursor-pointer"
+              className="absolute bottom-[-44px] left-1/2 -translate-x-1/2 w-32 h-32 rounded-full border-[3px] border-[#FAF9F5] bg-white shadow-[0_0_0_4px_#0A2A4A,0_0_0_5px_rgba(217,184,106,0.45),0_12px_28px_rgba(10,42,74,0.25)] flex items-center justify-center overflow-hidden p-3 z-20 hover:scale-105 hover:border-[#CFAC62] transition-all duration-350 cursor-pointer"
             >
+              {/* Laurel accents flanking the medallion */}
+              <svg className="absolute -left-8 top-1/2 -translate-y-1/2 w-9 h-16 opacity-70 pointer-events-none" viewBox="0 0 36 64" aria-hidden="true">
+                <path d="M28 8 Q34 24 26 34 Q30 24 20 16" fill="none" stroke="#CFAC62" strokeWidth="1.5" />
+                <path d="M28 44 Q34 28 26 20" fill="none" stroke="#CFAC62" strokeWidth="1.5" opacity="0.6" />
+              </svg>
+              <svg className="absolute -right-8 top-1/2 -translate-y-1/2 w-9 h-16 opacity-70 pointer-events-none" viewBox="0 0 36 64" aria-hidden="true">
+                <path d="M8 8 Q2 24 10 34 Q6 24 16 16" fill="none" stroke="#CFAC62" strokeWidth="1.5" />
+                <path d="M8 44 Q2 28 10 20" fill="none" stroke="#CFAC62" strokeWidth="1.5" opacity="0.6" />
+              </svg>
               <img 
                 src={sabushLogoFlags} 
                 alt="Sabush English Club Logo" 
                 referrerPolicy="no-referrer"
-                className="w-[85%] h-auto object-contain"
-              />
-              <img 
-                src={sabushBanner} 
-                alt="Sabush Coupon" 
-                referrerPolicy="no-referrer"
-                className="w-[85%] h-[28%] object-cover rounded border border-slate-100 shadow-3xs mt-1"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
 
           {/* CARD BODY CONTENT */}
-          <div className="p-6 md:p-7 pt-13 space-y-5 flex flex-col items-center shrink-0">
+          <div className="p-6 md:p-7 pt-16 space-y-5 flex flex-col items-center shrink-0">
             
-            {/* PRESTIGIOUS CREDENTIAL BADGES */}
-            <div className="flex items-center justify-center gap-3 w-full">
-              <span className="bg-[#FAF9F5] text-[#1D5C97] border border-[#CFAC62]/30 font-bold text-[10.5px] px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-3xs transform hover:scale-103 transition-transform cursor-pointer select-none uppercase tracking-wider">
-                <span className="text-xs">⭐</span>
-                <span>6 aulas grátis</span>
-              </span>
+            {/* PRESTIGIOUS CREDENTIAL BADGE */}
+            <div className="flex items-center justify-center w-full">
               <span className="bg-[#1D5C97]/5 text-[#1D5C97] border border-[#1D5C97]/15 font-bold text-[10.5px] px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-3xs transform hover:scale-103 transition-transform cursor-pointer select-none uppercase tracking-wider">
                 <span className="w-3.5 h-3.5 bg-[#1D5C97] text-white rounded-full flex items-center justify-center text-[8px] font-black leading-none pb-[1px]">✓</span>
                 <span>100% grátis</span>
