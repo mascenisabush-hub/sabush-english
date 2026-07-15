@@ -17,7 +17,7 @@ import { EnglishLevel } from './src/types';
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware for parsing JSON requests
 app.use(express.json({ limit: '10mb' }));
