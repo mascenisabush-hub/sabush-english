@@ -23,7 +23,9 @@ interface LayoutProps {
 
 export function Layout({ children, activeTab, setActiveTab, xp, streak, onGoBack, canGoBack, userProfile }: LayoutProps) {
   const isAdmin = auth.currentUser?.email === 'sabushagency@gmail.com';
-  const isSubscribed = userProfile?.subscriptionStatus === 'Activo' || isAdmin;
+  // TEMP: subscription gate disabled for free testing. Restore the line below to re-enable it.
+  // const isSubscribed = userProfile?.subscriptionStatus === 'Activo' || isAdmin;
+  const isSubscribed = true;
   const [isMoreOpen, setIsMoreOpen] = useState(false);
   const mainRef = useRef<HTMLElement>(null);
 

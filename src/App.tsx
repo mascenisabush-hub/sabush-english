@@ -150,7 +150,9 @@ export default function App() {
   };
 
   const isAdmin = currentUser?.email === 'sabushagency@gmail.com';
-  const isSubscribed = userProfile?.subscriptionStatus === 'Activo' || isAdmin;
+  // TEMP: subscription gate disabled for free testing. Restore the line below to re-enable it.
+  // const isSubscribed = userProfile?.subscriptionStatus === 'Activo' || isAdmin;
+  const isSubscribed = true;
 
   // 1. Listen for deep-linked public verify query parameter
   useEffect(() => {
