@@ -699,21 +699,21 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF9F5] text-slate-800 flex flex-col justify-between p-4 md:p-6 relative overflow-hidden font-sans">
-      {/* Soft elegant amber and emerald ambient background glows */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#CFAC62]/8 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-[#1D3E24]/8 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/3 left-10 w-64 h-64 bg-[#CFAC62]/4 rounded-full blur-[80px] pointer-events-none" />
+    <div className="min-h-screen bg-[#0A2A4A] text-slate-800 flex flex-col justify-between p-4 md:p-6 relative overflow-hidden font-sans">
+      {/* Soft elegant gold and blue ambient background glows on the navy backdrop */}
+      <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#CFAC62]/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute -bottom-32 -left-32 w-[28rem] h-[28rem] rounded-full border border-[#CFAC62]/20 pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-64 h-64 bg-[#1D5C97]/20 rounded-full blur-[80px] pointer-events-none" />
 
-      {/* Flag Ribbon Accent at Top of screen - refined as a fine luxury silk thread */}
-      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#1D3E24] via-[#CFAC62] to-[#ff4f38] z-50" />
+      {/* Brand Ribbon Accent at Top of screen - blue to gold silk thread */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#153E68] via-[#CFAC62] to-[#1D5C97] z-50" />
 
       <div className="flex-1 flex flex-col justify-center items-center py-4 z-10 w-full animate-fade-in">
         {/* Main luxury responsive card */}
         <div className="w-full max-w-[442px] bg-white rounded-[38px] shadow-[0_24px_70px_rgba(29,62,36,0.06)] overflow-hidden border border-[#CFAC62]/15 flex flex-col relative transition-all duration-300 hover:shadow-[0_32px_90px_rgba(29,62,36,0.09)]">
           
           {/* CURVED ACADEMIA HEADER */}
-          <div className="relative bg-gradient-to-br from-[#122816] via-[#1D3E24] to-[#2E5B36] h-[190px] w-full overflow-hidden border-b border-[#CFAC62]/20 flex flex-col items-center justify-center shrink-0">
+          <div className="relative bg-gradient-to-br from-[#153E68] via-[#1D5C97] to-[#2872B5] h-[190px] w-full overflow-hidden border-b border-[#CFAC62]/20 flex flex-col items-center justify-center shrink-0">
             {/* Subtle decorative gold-toned geometric circle overlays for luxury texture */}
             <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#CFAC62_1.5px,transparent_1.5px)] [background-size:16px_16px]" />
             <div className="absolute -top-12 -left-12 w-40 h-40 bg-gradient-to-br from-[#CFAC62]/15 to-transparent rounded-full blur-2xl" />
@@ -754,25 +754,25 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
             
             {/* PRESTIGIOUS CREDENTIAL BADGES */}
             <div className="flex items-center justify-center gap-3 w-full">
-              <span className="bg-[#FAF9F5] text-[#1D3E24] border border-[#CFAC62]/30 font-bold text-[10.5px] px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-3xs transform hover:scale-103 transition-transform cursor-pointer select-none uppercase tracking-wider">
+              <span className="bg-[#FAF9F5] text-[#1D5C97] border border-[#CFAC62]/30 font-bold text-[10.5px] px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-3xs transform hover:scale-103 transition-transform cursor-pointer select-none uppercase tracking-wider">
                 <span className="text-xs">⭐</span>
                 <span>6 aulas grátis</span>
               </span>
-              <span className="bg-[#1D3E24]/5 text-[#1D3E24] border border-[#1D3E24]/15 font-bold text-[10.5px] px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-3xs transform hover:scale-103 transition-transform cursor-pointer select-none uppercase tracking-wider">
-                <span className="w-3.5 h-3.5 bg-[#1D3E24] text-white rounded-full flex items-center justify-center text-[8px] font-black leading-none pb-[1px]">✓</span>
+              <span className="bg-[#1D5C97]/5 text-[#1D5C97] border border-[#1D5C97]/15 font-bold text-[10.5px] px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-3xs transform hover:scale-103 transition-transform cursor-pointer select-none uppercase tracking-wider">
+                <span className="w-3.5 h-3.5 bg-[#1D5C97] text-white rounded-full flex items-center justify-center text-[8px] font-black leading-none pb-[1px]">✓</span>
                 <span>100% grátis</span>
               </span>
             </div>
 
             {/* DESCRIPTION TEXT WITH ELEGANT GRAPHICS */}
             <p className="font-sans text-[12.5px] md:text-[13px] text-[#424B45] text-center font-medium leading-relaxed max-w-[340px] mx-auto tracking-wide">
-              Entre na sua conta para progredir nas aulas, acumular <span className="text-[#1D3E24] font-bold">pontos (XP)</span> e esclarecer dúvidas com o <span className="text-[#CFAC62] font-semibold font-serif italic">Mocho Co-Piloto</span>.
+              Entre na sua conta para progredir nas aulas, acumular <span className="text-[#1D5C97] font-bold">pontos (XP)</span> e esclarecer dúvidas com o <span className="text-[#CFAC62] font-semibold font-serif italic">Mocho Co-Piloto</span>.
             </p>
 
             {/* ERROR / SUCCESS ALERTS */}
             {successMsg && (
-              <div className="bg-[#1D3E24]/5 text-[#1D3E24] border border-[#1D3E24]/20 p-3.5 px-4 rounded-2xl text-[12.5px] font-bold flex items-center gap-2.5 shadow-3xs w-full animate-fade-in leading-snug">
-                <span className="w-5 h-5 bg-[#1D3E24] text-white rounded-full flex items-center justify-center text-[10px] font-black leading-none shrink-0 shadow-sm select-none">✓</span>
+              <div className="bg-[#1D5C97]/5 text-[#1D5C97] border border-[#1D5C97]/20 p-3.5 px-4 rounded-2xl text-[12.5px] font-bold flex items-center gap-2.5 shadow-3xs w-full animate-fade-in leading-snug">
+                <span className="w-5 h-5 bg-[#1D5C97] text-white rounded-full flex items-center justify-center text-[10px] font-black leading-none shrink-0 shadow-sm select-none">✓</span>
                 <span className="tracking-tight text-left">{successMsg}</span>
               </div>
             )}
@@ -787,7 +787,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                   <button
                     type="button"
                     onClick={handleGuestLogin}
-                    className="w-full bg-[#FAF9F5] border border-[#CFAC62]/30 hover:bg-[#FAF9F5]/40 text-[#1D3E24] text-xs font-semibold py-2.5 rounded-xl transition-all cursor-pointer flex items-center justify-center space-x-1.5 shadow-3xs font-sans"
+                    className="w-full bg-[#FAF9F5] border border-[#CFAC62]/30 hover:bg-[#FAF9F5]/40 text-[#1D5C97] text-xs font-semibold py-2.5 rounded-xl transition-all cursor-pointer flex items-center justify-center space-x-1.5 shadow-3xs font-sans"
                   >
                     <span>🚀 Entrar com Acesso de Teste (Bypass)</span>
                   </button>
@@ -797,14 +797,14 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
 
             {/* METHOD TABS SELECTOR (GLASS FEEL SLIDER) */}
             {!isSmsSent && (
-              <div className="grid grid-cols-2 p-1 bg-[#1D3E24]/5 rounded-2xl border border-[#1D3E24]/10 w-full shrink-0">
+              <div className="grid grid-cols-2 p-1 bg-[#1D5C97]/5 rounded-2xl border border-[#1D5C97]/10 w-full shrink-0">
                 <button
                   type="button"
                   onClick={() => setAuthMethod('email')}
                   className={`py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer flex items-center justify-center gap-1.5 ${
                     authMethod === 'email'
-                      ? 'bg-[#1D3E24] text-white shadow-xs'
-                      : 'text-[#424B45] hover:text-[#1D3E24]'
+                      ? 'bg-[#1D5C97] text-white shadow-xs'
+                      : 'text-[#424B45] hover:text-[#1D5C97]'
                   }`}
                 >
                   <span>✉️</span> E-mail &amp; Senha
@@ -814,8 +814,8 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                   onClick={() => setAuthMethod('phone')}
                   className={`py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer flex items-center justify-center gap-1.5 ${
                     authMethod === 'phone'
-                      ? 'bg-[#1D3E24] text-white shadow-xs'
-                      : 'text-[#424B45] hover:text-[#1D3E24]'
+                      ? 'bg-[#1D5C97] text-white shadow-xs'
+                      : 'text-[#424B45] hover:text-[#1D5C97]'
                   }`}
                 >
                   <span>🇲🇿</span> Telemóvel (SMS)
@@ -827,13 +827,13 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
             {authMethod === 'email' ? (
               <form onSubmit={handleEmailAuth} className="space-y-4 w-full shrink-0">
                 <div className="flex items-center justify-between px-1 text-[10px] font-bold uppercase tracking-wider">
-                  <span className="text-[#1D3E24]">
+                  <span className="text-[#1D5C97]">
                     {emailMode === 'login' ? 'Iniciar Sessão' : 'Criar Nova Conta'}
                   </span>
                   <button
                     type="button"
                     onClick={() => setEmailMode(emailMode === 'login' ? 'signup' : 'login')}
-                    className="text-slate-400 hover:text-[#1D3E24] hover:underline transition-all cursor-pointer font-bold lowercase first-letter:uppercase"
+                    className="text-slate-400 hover:text-[#1D5C97] hover:underline transition-all cursor-pointer font-bold lowercase first-letter:uppercase"
                   >
                     {emailMode === 'login' ? 'Não tem conta? Registar' : 'Já tem conta? Entrar'}
                   </button>
@@ -849,7 +849,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Ex: João Tembe"
-                        className="w-full bg-white/70 border border-[#1D3E24]/15 rounded-2xl py-3.5 pl-11 pr-4 text-sm font-medium text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-[#1D3E24]/5 focus:border-[#1D3E24] focus:bg-white transition-all shadow-3xs h-12"
+                        className="w-full bg-white/70 border border-[#1D5C97]/15 rounded-2xl py-3.5 pl-11 pr-4 text-sm font-medium text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-[#1D5C97]/5 focus:border-[#1D5C97] focus:bg-white transition-all shadow-3xs h-12"
                       />
                       <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs font-semibold select-none">A</div>
                     </div>
@@ -865,7 +865,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Ex: joao@gmail.com"
-                      className="w-full bg-white/70 border border-[#1D3E24]/15 rounded-2xl py-3.5 pl-11 pr-4 text-sm font-medium text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-[#1D3E24]/5 focus:border-[#1D3E24] focus:bg-white transition-all shadow-3xs h-12"
+                      className="w-full bg-white/70 border border-[#1D5C97]/15 rounded-2xl py-3.5 pl-11 pr-4 text-sm font-medium text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-[#1D5C97]/5 focus:border-[#1D5C97] focus:bg-white transition-all shadow-3xs h-12"
                     />
                     <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
                   </div>
@@ -880,7 +880,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Mínimo 6 caracteres"
-                      className="w-full bg-white/70 border border-[#1D3E24]/15 rounded-2xl py-3.5 pl-11 pr-4 text-sm font-medium text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-[#1D3E24]/5 focus:border-[#1D3E24] focus:bg-white transition-all shadow-3xs h-12"
+                      className="w-full bg-white/70 border border-[#1D5C97]/15 rounded-2xl py-3.5 pl-11 pr-4 text-sm font-medium text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-[#1D5C97]/5 focus:border-[#1D5C97] focus:bg-white transition-all shadow-3xs h-12"
                     />
                     <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
                   </div>
@@ -889,7 +889,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-[#1D3E24] hover:bg-[#122816] active:scale-[0.98] text-[#FAF9F5] font-bold text-xs py-3.5 rounded-2xl cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 min-h-[46px] select-none uppercase tracking-[0.12em] border border-[#CFAC62]/35 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#1D5C97] hover:bg-[#153E68] active:scale-[0.98] text-[#FAF9F5] font-bold text-xs py-3.5 rounded-2xl cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 min-h-[46px] select-none uppercase tracking-[0.12em] border border-[#CFAC62]/35 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <Loader2 className="w-5 h-5 animate-spin text-white" />
@@ -904,8 +904,8 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                   <form onSubmit={handleSendSms} className="space-y-4 w-full">
                     <div className="space-y-1">
                       <label className="text-[10px] uppercase font-bold tracking-[0.12em] text-[#556059] block">Número de Telefone</label>
-                      <div className="flex w-full items-stretch rounded-2xl border border-[#1D3E24]/20 bg-slate-50 overflow-hidden focus-within:ring-2 focus-within:ring-[#1D3E24]/5 focus-within:border-[#1D3E24] transition-all h-12 relative">
-                        <div className="bg-[#1D3E24] text-[#FAF9F5] flex items-center justify-center px-4 font-bold text-sm select-none shrink-0 rounded-l-2xl border border-[#1D3E24]">
+                      <div className="flex w-full items-stretch rounded-2xl border border-[#1D5C97]/20 bg-slate-50 overflow-hidden focus-within:ring-2 focus-within:ring-[#1D5C97]/5 focus-within:border-[#1D5C97] transition-all h-12 relative">
+                        <div className="bg-[#1D5C97] text-[#FAF9F5] flex items-center justify-center px-4 font-bold text-sm select-none shrink-0 rounded-l-2xl border border-[#1D5C97]">
                           <span>+258</span>
                         </div>
                         <input
@@ -940,7 +940,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                       <div className="mt-2.5 bg-[#FAF9F5] p-3 rounded-2xl border border-[#CFAC62]/20 flex items-start gap-2.5 animate-fade-in">
                         <ShieldCheck className="w-4 h-4 text-[#CFAC62] shrink-0 mt-0.5" />
                         <div className="text-left text-[10.5px] text-[#556059] font-medium leading-relaxed">
-                          <strong className="text-[#1D3E24] block font-bold mb-0.5">Segurança &amp; Progresso</strong>
+                          <strong className="text-[#1D5C97] block font-bold mb-0.5">Segurança &amp; Progresso</strong>
                           Usamos o teu número para guardar o teu progresso e enviar lembretes.
                         </div>
                       </div>
@@ -953,7 +953,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full bg-[#1D3E24] hover:bg-[#122816] active:scale-[0.98] text-[#FAF9F5] font-bold text-xs py-3.5 rounded-2xl cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 min-h-[46px] select-none uppercase tracking-[0.12em] border border-[#CFAC62]/35 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-[#1D5C97] hover:bg-[#153E68] active:scale-[0.98] text-[#FAF9F5] font-bold text-xs py-3.5 rounded-2xl cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 min-h-[46px] select-none uppercase tracking-[0.12em] border border-[#CFAC62]/35 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {loading ? (
                         <Loader2 className="w-5 h-5 animate-spin text-white" />
@@ -973,10 +973,10 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                         <button
                           type="button"
                           onClick={handleResetPhoneForm}
-                          className="text-[#1D3E24] hover:text-[#CFAC62] hover:underline cursor-pointer flex items-center space-x-1 font-bold text-[10px]"
+                          className="text-[#1D5C97] hover:text-[#CFAC62] hover:underline cursor-pointer flex items-center space-x-1 font-bold text-[10px]"
                         >
-                          <RefreshCw className="w-3 h-3 text-[#1D3E24]" />
-                          <span className="text-[#1D3E24] font-bold">Mudar número</span>
+                          <RefreshCw className="w-3 h-3 text-[#1D5C97]" />
+                          <span className="text-[#1D5C97] font-bold">Mudar número</span>
                         </button>
                       </div>
                       <div className="relative">
@@ -987,14 +987,14 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                           value={smsCode}
                           onChange={(e) => setSmsCode(e.target.value.replace(/\D/g, ''))}
                           placeholder="Ex:  1  2  3  4  5  6"
-                          className="w-full bg-white border border-[#1D3E24]/15 rounded-2xl py-3.5 pl-12 pr-4 text-sm font-bold tracking-[0.4em] text-center text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-[#1D3E24]/5 focus:border-[#1D3E24] transition-all shadow-inner h-12"
+                          className="w-full bg-white border border-[#1D5C97]/15 rounded-2xl py-3.5 pl-12 pr-4 text-sm font-bold tracking-[0.4em] text-center text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-[#1D5C97]/5 focus:border-[#1D5C97] transition-all shadow-inner h-12"
                         />
                         <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center justify-center text-slate-400">
                           <Key className="w-4 h-4 text-slate-400" />
                         </div>
                       </div>
                       <p className="text-[11px] text-slate-400 leading-tight">
-                        Introduza o código numérico de 6 dígitos enviado para <span className="font-extrabold text-[#1D3E24]">+258 {phone || '870242114'}</span>.
+                        Introduza o código numérico de 6 dígitos enviado para <span className="font-extrabold text-[#1D5C97]">+258 {phone || '870242114'}</span>.
                       </p>
 
                       <div className="flex items-center justify-between pt-2 border-t border-slate-100/60 mt-3.5">
@@ -1008,9 +1008,9 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                             type="button"
                             onClick={handleResendSms}
                             disabled={loading}
-                            className="text-[#1D3E24] hover:text-[#CFAC62] hover:underline text-[10.5px] font-bold cursor-pointer flex items-center gap-1 disabled:opacity-50"
+                            className="text-[#1D5C97] hover:text-[#CFAC62] hover:underline text-[10.5px] font-bold cursor-pointer flex items-center gap-1 disabled:opacity-50"
                           >
-                            <RefreshCw className="w-3 h-3 text-[#1D3E24]" />
+                            <RefreshCw className="w-3 h-3 text-[#1D5C97]" />
                             Reenviar código
                           </button>
                         )}
@@ -1021,7 +1021,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                         <HelpCircle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                         <div>
                           <strong className="text-amber-950 font-bold block mb-0.5">Problemas com o SMS?</strong>
-                          As operadoras (Vodacom, Movitel, Tmcel) por vezes atrasam o envio. Se o código não chegar, podes clicar em "Mudar número" acima para corrigir o número, tentar fazer login com a tua conta <strong className="text-[#1D3E24] font-bold">Google</strong>, ou contactar-nos no WhatsApp: <a href="https://wa.me/258872421114" target="_blank" rel="noreferrer" className="underline font-bold text-amber-900 hover:text-amber-950">+258 87 242 1114</a>.
+                          As operadoras (Vodacom, Movitel, Tmcel) por vezes atrasam o envio. Se o código não chegar, podes clicar em "Mudar número" acima para corrigir o número, tentar fazer login com a tua conta <strong className="text-[#1D5C97] font-bold">Google</strong>, ou contactar-nos no WhatsApp: <a href="https://wa.me/258872421114" target="_blank" rel="noreferrer" className="underline font-bold text-amber-900 hover:text-amber-950">+258 87 242 1114</a>.
                         </div>
                       </div>
                     </div>
@@ -1029,7 +1029,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="w-full bg-[#1D3E24] hover:bg-[#122816] active:scale-[0.98] text-[#FAF9F5] font-bold text-xs py-3.5 rounded-2xl cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 min-h-[46px] select-none uppercase tracking-[0.12em] border border-[#CFAC62]/35 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-[#1D5C97] hover:bg-[#153E68] active:scale-[0.98] text-[#FAF9F5] font-bold text-xs py-3.5 rounded-2xl cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 min-h-[46px] select-none uppercase tracking-[0.12em] border border-[#CFAC62]/35 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {loading ? (
                         <Loader2 className="w-5 h-5 animate-spin text-white" />
@@ -1056,7 +1056,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                     type="button"
                     onClick={handleGoogleAuth}
                     disabled={loading}
-                    className="bg-white hover:bg-[#FAF9F5] active:scale-95 text-[#1D3E24] font-bold text-[11px] py-3.5 rounded-2xl cursor-pointer transition-all duration-300 flex items-center justify-center space-x-2.5 shadow-3xs border border-[#1D3E24]/15 select-none disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#CFAC62]/50"
+                    className="bg-white hover:bg-[#FAF9F5] active:scale-95 text-[#1D5C97] font-bold text-[11px] py-3.5 rounded-2xl cursor-pointer transition-all duration-300 flex items-center justify-center space-x-2.5 shadow-3xs border border-[#1D5C97]/15 select-none disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#CFAC62]/50"
                   >
                     <svg className="w-4.5 h-4.5 shrink-0 animate-pulse-slow" viewBox="0 0 24 24">
                       <path
@@ -1084,7 +1084,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                       type="button"
                       onClick={handleGuestLogin}
                       disabled={loading}
-                      className="bg-[#1D3E24]/10 hover:bg-[#1D3E24]/15 active:scale-95 text-[#1D3E24] font-bold text-[11px] py-3.5 rounded-2xl cursor-pointer transition-all flex items-center justify-center space-x-1.5 shadow-3xs border border-[#1D3E24]/10 select-none disabled:opacity-50 disabled:cursor-not-allowed font-sans"
+                      className="bg-[#1D5C97]/10 hover:bg-[#1D5C97]/15 active:scale-95 text-[#1D5C97] font-bold text-[11px] py-3.5 rounded-2xl cursor-pointer transition-all flex items-center justify-center space-x-1.5 shadow-3xs border border-[#1D5C97]/10 select-none disabled:opacity-50 disabled:cursor-not-allowed font-sans"
                     >
                       <span className="text-xs">👤</span>
                       <span>Modo de Demonstração</span>
@@ -1096,7 +1096,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                   <button
                     type="button"
                     onClick={onNavigateToVerify}
-                    className="text-slate-400 hover:text-[#1D3E24] text-[10px] font-bold tracking-wide py-1 transition-all cursor-pointer flex items-center justify-center space-x-1.5 hover:underline select-none"
+                    className="text-slate-400 hover:text-[#1D5C97] text-[10px] font-bold tracking-wide py-1 transition-all cursor-pointer flex items-center justify-center space-x-1.5 hover:underline select-none"
                   >
                     <span>🎓 Confirmar Certificado de Conclusão Público</span>
                   </button>
@@ -1108,9 +1108,9 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
             <div className="relative flex justify-center items-center gap-4 py-2 mt-2 w-full select-none">
               {/* Particle stars */}
               <span className="absolute left-6 top-1 text-[11px] text-[#CFAC62] animate-pulse">✦</span>
-              <span className="absolute right-8 bottom-0 text-[11px] text-[#2E5B36] animate-pulse">✦</span>
+              <span className="absolute right-8 bottom-0 text-[11px] text-[#2872B5] animate-pulse">✦</span>
               <span className="absolute left-1/4 bottom-2 text-[10px] text-[#CFAC62]/60 animate-pulse">✧</span>
-              <span className="absolute right-1/4 top-3 text-[10px] text-[#1D3E24]/40 animate-pulse">✧</span>
+              <span className="absolute right-1/4 top-3 text-[10px] text-[#1D5C97]/40 animate-pulse">✧</span>
 
               {/* Trophy Circle - Luxury brass style */}
               <div 
@@ -1131,9 +1131,9 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
               {/* Rocket Circle - Elite green */}
               <div 
                 title="Resultados Acelerados"
-                className="w-10 h-10 rounded-full bg-[#1D3E24]/10 text-[#1D3E24] border border-[#1D3E24]/25 flex items-center justify-center shadow-sm transform hover:scale-110 hover:rotate-6 transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-[#1D5C97]/10 text-[#1D5C97] border border-[#1D5C97]/25 flex items-center justify-center shadow-sm transform hover:scale-110 hover:rotate-6 transition-all duration-300"
               >
-                <Rocket className="w-5 h-5 text-[#1D3E24]" />
+                <Rocket className="w-5 h-5 text-[#1D5C97]" />
               </div>
 
               {/* BookOpen Circle - Academic ink */}
@@ -1165,10 +1165,10 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
             {/* Header */}
             <div className="flex items-start justify-between gap-4">
               <div className="space-y-1.5">
-                <span className="bg-[#CFAC62]/20 text-[#1D3E24] border border-[#CFAC62]/30 font-extrabold text-[9px] px-2.5 py-1 rounded-full uppercase tracking-wider block w-max select-none">
+                <span className="bg-[#CFAC62]/20 text-[#1D5C97] border border-[#CFAC62]/30 font-extrabold text-[9px] px-2.5 py-1 rounded-full uppercase tracking-wider block w-max select-none">
                   Ambiente de Teste (AI Studio)
                 </span>
-                <h3 className="text-lg font-serif font-bold text-[#1D3E24] tracking-tight">
+                <h3 className="text-lg font-serif font-bold text-[#1D5C97] tracking-tight">
                   🔌 Simulador de Entrada do Google
                 </h3>
               </div>
@@ -1193,7 +1193,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
 
             {/* How to fix permanently */}
             <div className="space-y-3">
-              <h4 className="text-[11px] font-bold text-[#1D3E24] uppercase tracking-wider select-none">
+              <h4 className="text-[11px] font-bold text-[#1D5C97] uppercase tracking-wider select-none">
                 🛠️ Como resolver no Firebase (Produção)
               </h4>
               <p className="text-[11.5px] text-slate-600 leading-relaxed">
@@ -1203,7 +1203,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                   href={`https://console.firebase.google.com/project/${firebaseConfig.projectId || 'sabush-english-club-8fddd'}/authentication/settings`}
                   target="_blank" 
                   rel="noreferrer"
-                  className="text-[#CFAC62] font-bold underline hover:text-[#1D3E24]"
+                  className="text-[#CFAC62] font-bold underline hover:text-[#1D5C97]"
                 >
                   Consola Firebase &gt; Authentication &gt; Settings &gt; Authorized domains
                 </a>
@@ -1233,7 +1233,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
 
             {/* Simulated options */}
             <div className="space-y-3 pt-2 border-t border-slate-100">
-              <h4 className="text-[11px] font-bold text-[#1D3E24] uppercase tracking-wider select-none">
+              <h4 className="text-[11px] font-bold text-[#1D5C97] uppercase tracking-wider select-none">
                 ⚡ Continuar Imediatamente (Simulador Google)
               </h4>
               
@@ -1243,7 +1243,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                   onClick={() => handleSimulatedGoogleLogin('sabushagency@gmail.com', 'Sabush Agency Admin')}
                   className="bg-white hover:bg-slate-50 border border-slate-200 rounded-2xl p-3 text-left transition-all hover:border-[#CFAC62]/60 hover:shadow-xs cursor-pointer"
                 >
-                  <div className="font-bold text-xs text-[#1D3E24]">Sabush Agency Admin</div>
+                  <div className="font-bold text-xs text-[#1D5C97]">Sabush Agency Admin</div>
                   <div className="text-[10px] text-slate-400 truncate">sabushagency@gmail.com</div>
                 </button>
                 
@@ -1252,7 +1252,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                   onClick={() => handleSimulatedGoogleLogin('visitante@sabush.club', 'Aluno Convidado')}
                   className="bg-white hover:bg-slate-50 border border-slate-200 rounded-2xl p-3 text-left transition-all hover:border-[#CFAC62]/60 hover:shadow-xs cursor-pointer"
                 >
-                  <div className="font-bold text-xs text-[#1D3E24]">Aluno Convidado</div>
+                  <div className="font-bold text-xs text-[#1D5C97]">Aluno Convidado</div>
                   <div className="text-[10px] text-slate-400 truncate">visitante@sabush.club</div>
                 </button>
               </div>
@@ -1279,7 +1279,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                 <button
                   type="button"
                   onClick={() => handleSimulatedGoogleLogin(simEmail, simName)}
-                  className="w-full bg-[#1D3E24] hover:bg-[#122816] text-[#FAF9F5] font-bold text-xs py-2 rounded-xl mt-1 cursor-pointer transition-all uppercase tracking-wider text-center"
+                  className="w-full bg-[#1D5C97] hover:bg-[#153E68] text-[#FAF9F5] font-bold text-xs py-2 rounded-xl mt-1 cursor-pointer transition-all uppercase tracking-wider text-center"
                 >
                   Entrar com Conta Personalizada
                 </button>
@@ -1291,8 +1291,8 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
       )}
 
       {/* FOOTER AREA - DESIGN REFINED BOX */}
-      <div className="py-5 border-t border-[#1D3E24]/5 text-center text-[10.5px] text-[#556059] space-y-1.5 z-10 w-full shrink-0">
-        <p className="font-bold text-[#1D3E24] flex items-center justify-center gap-1.5 select-none uppercase tracking-wider text-[9.5px]">
+      <div className="py-5 border-t border-[#1D5C97]/5 text-center text-[10.5px] text-[#556059] space-y-1.5 z-10 w-full shrink-0">
+        <p className="font-bold text-[#1D5C97] flex items-center justify-center gap-1.5 select-none uppercase tracking-wider text-[9.5px]">
           <ShieldCheck className="w-4 h-4 text-[#CFAC62]" />
           <span>Interface em Português para facilitar os seus estudos</span>
         </p>
