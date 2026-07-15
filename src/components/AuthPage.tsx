@@ -2,9 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword, 
-  RecaptchaVerifier, 
-  signInWithPhoneNumber,
-  ConfirmationResult,
   GoogleAuthProvider,
   signInWithPopup
 } from 'firebase/auth';
@@ -12,7 +9,7 @@ import firebaseConfig from '../../firebase-applet-config.json';
 import { auth, saveUserProfile, getUserProfile } from '../firebase';
 import { Mascot } from './Mascot';
 import { SabushLogo } from './SabushLogo';
-import { Mail, Lock, Phone, Key, HelpCircle, Loader2, RefreshCw, CheckCircle2, MessageSquare, Trophy, Heart, Rocket, BookOpen, ShieldCheck } from 'lucide-react';
+import { Mail, Lock, Loader2, Trophy, Heart, Rocket, BookOpen, ShieldCheck } from 'lucide-react';
 import { EnglishLevel } from '../types';
 
 // @ts-ignore
@@ -20,55 +17,12 @@ import sabushLogoFlags from '../assets/images/sabush_logo_flags_1781360603744.jp
 // @ts-ignore
 import sabushBanner from '../assets/images/sabush_banner_1781359379070.jpg';
 
-export function getMozambicanCarrier(phoneNumber: string) {
-  const digits = phoneNumber.replace(/\s+/g, '').replace(/[-()]/g, '');
-  let baseDigits = digits;
-  if (digits.startsWith('+258')) {
-    baseDigits = digits.slice(4);
-  } else if (digits.startsWith('258')) {
-    baseDigits = digits.slice(3);
-  } else if (digits.startsWith('0')) {
-    baseDigits = digits.slice(1);
-  }
-  
-  if (baseDigits.length >= 2) {
-    const prefix2 = baseDigits.substring(0, 2);
-    if (prefix2 === '84' || prefix2 === '85') {
-      return { 
-        name: 'Vodacom Moçambique', 
-        color: 'text-red-400 bg-red-950/40 border-red-800/40', 
-        logo: '🔴', 
-        prefix: ['84', '85'] 
-      };
-    }
-    if (prefix2 === '86' || prefix2 === '87') {
-      return { 
-        name: 'Movitel Moçambique', 
-        color: 'text-amber-400 bg-amber-950/40 border-amber-800/40', 
-        logo: '🟡', 
-        prefix: ['86', '87'] 
-      };
-    }
-    if (prefix2 === '82' || prefix2 === '83') {
-      return { 
-        name: 'Tmcel (mcel) Moçambique', 
-        color: 'text-emerald-400 bg-emerald-950/40 border-emerald-800/40', 
-        logo: '🟢', 
-        prefix: ['82', '83'] 
-      };
-    }
-  }
-  return null;
-}
-
 interface AuthPageProps {
   onAuthSuccess: (userId: string, isNewUser: boolean) => void;
   onNavigateToVerify: () => void;
 }
 
 export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
-  // Tabs: 'email' | 'phone'
-  const [authMethod, setAuthMethod] = useState<'email' | 'phone'>('email');
   // Sub-tabs for email: 'login' | 'signup'
   const [emailMode, setEmailMode] = useState<'login' | 'signup'>('login');
 
@@ -76,14 +30,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
-  // Mozambican phone inputs
-  const [phone, setPhone] = useState('');
-  const [detectedCarrier, setDetectedCarrier] = useState<{ name: string; color: string; logo: string; prefix: string[] } | null>(null);
-  const [smsCode, setSmsCode] = useState('');
-  const [isSmsSent, setIsSmsSent] = useState(false);
-  const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
-  const [isSandboxMode, setIsSandboxMode] = useState(false);
+
   const [showGoogleSandboxSimulator, setShowGoogleSandboxSimulator] = useState(false);
   const [simName, setSimName] = useState('Sabush VIP Student');
   const [simEmail, setSimEmail] = useState('sabushagency@gmail.com');
@@ -103,25 +50,6 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
-
-  // Recaptcha verifier ref
-  const recaptchaVerifierRef = useRef<RecaptchaVerifier | null>(null);
-  const [recaptchaResetIndex, setRecaptchaResetIndex] = useState<number>(0);
-
-  // SMS resend cooldown timer (default: 30 seconds)
-  const [cooldown, setCooldown] = useState(30);
-
-  useEffect(() => {
-    let timer: any = null;
-    if (isSmsSent && cooldown > 0) {
-      timer = setInterval(() => {
-        setCooldown(prev => prev - 1);
-      }, 1000);
-    }
-    return () => {
-      if (timer) clearInterval(timer);
-    };
-  }, [isSmsSent, cooldown]);
 
   // Dev state
   const [showDevOptions, setShowDevOptions] = useState(() => {
@@ -152,20 +80,6 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
       localStorage.setItem('sabush_show_dev', 'true');
     }
   }, []);
-
-  // Clean up function helper to cleanly destroy recaptcha widget and increment index so React replaces the DOM node
-  const cleanRecaptcha = () => {
-    if (recaptchaVerifierRef.current) {
-      try {
-        console.log('[SABUSH CLUB RECAPTCHA] Clearing RecaptchaVerifier...');
-        recaptchaVerifierRef.current.clear();
-      } catch (e) {
-        console.warn('Error during recaptchaVerifierRef.current.clear():', e);
-      }
-      recaptchaVerifierRef.current = null;
-    }
-    setRecaptchaResetIndex(prev => prev + 1);
-  };
 
   const handleGuestLogin = () => {
     localStorage.setItem('sabush_guest_active', 'true');
@@ -270,56 +184,11 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
     }
   };
 
-  // Clean error on toggling methods
+  // Clean error on toggling sign in / sign up mode
   useEffect(() => {
     setError(null);
     setSuccessMsg(null);
-  }, [authMethod, emailMode]);
-
-  // Manage RecaptchaVerifier lifecycle strictly inside a useEffect hook
-  useEffect(() => {
-    if (authMethod !== 'phone') {
-      return;
-    }
-
-    let isMounted = true;
-    console.log('[SABUSH CLUB RECAPTCHA] useEffect: initializing RecaptchaVerifier...');
-
-    // Clear contents of the container to be absolutely safe
-    const container = document.getElementById('recaptcha-container');
-    if (container) {
-      container.innerHTML = '';
-    }
-
-    try {
-      recaptchaVerifierRef.current = new RecaptchaVerifier(auth, 'recaptcha-container', {
-        size: 'invisible',
-        callback: () => {
-          console.log('[SABUSH CLUB RECAPTCHA] Invisible challenge solved successfully!');
-        },
-        'expired-callback': () => {
-          console.warn('[SABUSH CLUB RECAPTCHA] Invisible challenge expired!');
-          setError('O reCAPTCHA expirou. Por favor, tente novamente.');
-        }
-      });
-      console.log('[SABUSH CLUB RECAPTCHA] Instantiated brand new RecaptchaVerifier successfully in useEffect.');
-    } catch (err) {
-      console.error('[SABUSH CLUB RECAPTCHA] Error creating RecaptchaVerifier inside useEffect:', err);
-    }
-
-    return () => {
-      isMounted = false;
-      if (recaptchaVerifierRef.current) {
-        try {
-          console.log('[SABUSH CLUB RECAPTCHA] useEffect cleanup: Clearing RecaptchaVerifier...');
-          recaptchaVerifierRef.current.clear();
-        } catch (e) {
-          console.warn('[SABUSH CLUB RECAPTCHA] Error during RecaptchaVerifier clear inside cleanup:', e);
-        }
-        recaptchaVerifierRef.current = null;
-      }
-    };
-  }, [authMethod, recaptchaResetIndex]);
+  }, [emailMode]);
 
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -391,311 +260,6 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleSendSms = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (loading) return; // Prevent double trigger
-    setError(null);
-    setLoading(true);
-
-    try {
-      // Normalize number
-      let cleanedPhone = phone.replace(/\s+/g, '').replace(/[-()]/g, '');
-      if (!cleanedPhone) {
-        throw new Error('Por favor, introduza o seu número de telemóvel.');
-      }
-
-      // Check format
-      // Mozambican phone numbers typically are 9 digits (82, 83, 84, 85, 86, 87)
-      if (cleanedPhone.startsWith('0')) {
-        cleanedPhone = cleanedPhone.slice(1);
-      }
-      
-      let finalPhone = cleanedPhone;
-      if (!cleanedPhone.startsWith('+')) {
-        if (cleanedPhone.startsWith('258')) {
-          finalPhone = '+' + cleanedPhone;
-        } else {
-          finalPhone = '+258' + cleanedPhone;
-        }
-      }
-
-      // Validate digits count to be realistic (typically +258 + 9 digits = 13 chars, or international)
-      if (finalPhone.length < 11 || finalPhone.length > 15) {
-        throw new Error('Por favor, introduza um número de telemóvel válido (ex: 84 123 4567).');
-      }
-
-      console.log('[SABUSH CLUB AUTH] Phone SMS send attempted. Target:', finalPhone, 'Active Project ID:', firebaseConfig.projectId);
-
-      // Lazy initialization of RecaptchaVerifier
-      let verifier = recaptchaVerifierRef.current;
-      if (!verifier) {
-        const container = document.getElementById('recaptcha-container');
-        if (!container) {
-          const newContainer = document.createElement('div');
-          newContainer.id = 'recaptcha-container';
-          newContainer.className = 'fixed bottom-0 right-0 z-[9999] pointer-events-none w-0 h-0 opacity-0';
-          document.body.appendChild(newContainer);
-        } else {
-          container.innerHTML = '';
-        }
-        
-        verifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-          size: 'invisible',
-          callback: () => {
-            console.log('[SABUSH CLUB RECAPTCHA] Invisible challenge solved successfully!');
-          },
-          'expired-callback': () => {
-            console.warn('[SABUSH CLUB RECAPTCHA] Invisible challenge expired!');
-            setError('O reCAPTCHA expirou. Por favor, tente novamente.');
-          }
-        });
-        recaptchaVerifierRef.current = verifier;
-      }
-
-      const result = await signInWithPhoneNumber(auth, finalPhone, verifier);
-      
-      setConfirmationResult(result);
-      setIsSmsSent(true);
-      setCooldown(30); // reset cooldown to 30 when SMS is first sent
-      setSuccessMsg('Código de verificação SMS enviado!');
-    } catch (err: any) {
-      console.error("Phone send SMS error details:", err);
-      
-      if (isSandboxEnvironment) {
-        console.log('[SABUSH CLUB SMS SIMULATOR] Activating SMS simulation sandbox for error:', err.code, err.message);
-        const mockCode = String(Math.floor(100000 + Math.random() * 900000));
-        localStorage.setItem('sabush_simulated_sms_code', mockCode);
-        localStorage.setItem('sabush_simulated_phone', phone.replace(/\s+/g, '').replace(/[-()]/g, ''));
-        
-        setIsSandboxMode(true);
-        setIsSmsSent(true);
-        setCooldown(30);
-        setSmsCode('');
-        
-        setSuccessMsg(`[SIMULADOR DE TESTE] Ativámos o simulador local automático porque o envio de SMS real falhou ou o domínio não está autorizado no Firebase. Use este código de teste para entrar: ${mockCode}`);
-        return;
-      }
-
-      let friendlyError = err.message;
-      if (err.code === 'auth/invalid-phone-number') {
-        friendlyError = 'O número de telemóvel introduzido não é válido.';
-      } else if (err.code === 'auth/too-many-requests') {
-        friendlyError = 'Muitas tentativas feitas para este telemóvel. Por favor, tente mais tarde.';
-      } else if (err.code === 'auth/operation-not-allowed') {
-        if (err.message && (err.message.includes('region') || err.message.includes('região') || err.message.includes('SMS unable to be sent'))) {
-          friendlyError = '[Erro de Região SMS] O envio de SMS está bloqueado para Moçambique. Ative a região de Moçambique (+258) na Consola do Firebase: Aceda a Authentication > Configurações (Settings) > Política de Região de SMS (SMS Region Policy) e mude para "Permitir" ou selecione explicitamente "Moçambique (+258)".';
-        } else {
-          friendlyError = 'O login por telefone (SMS) não está ativo no Firebase. Ative "Telefone" (Phone) na Consola do Firebase: https://console.firebase.google.com/project/' + (firebaseConfig.projectId || 'your-project') + '/authentication/providers';
-        }
-      } else if (err.message && (err.message.includes('region') || err.message.includes('SMS unable to be sent'))) {
-        friendlyError = '[Erro de Região SMS] O envio de SMS está bloqueado para Moçambique. Ative a região de Moçambique (+258) na Consola do Firebase: Aceda a Authentication > Configurações (Settings) > Política de Região de SMS (SMS Region Policy) e mude para "Permitir" ou selecione explicitamente "Moçambique (+258)".';
-      }
-      
-      const errorCodeMsg = err.code ? `[Código: ${err.code}] ` : '';
-      setError(`${errorCodeMsg}${friendlyError}`);
-      
-      // Reset Recaptcha after failure
-      cleanRecaptcha();
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleVerifySms = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
-    console.log('[SABUSH CLUB AUTH] Phone SMS verification code confirmation attempted. Active Project ID:', firebaseConfig.projectId);
-
-    try {
-      if (!smsCode || smsCode.length < 6) {
-        throw new Error('Por favor, introduza o código de 6 dígitos recebido.');
-      }
-
-      if (isSandboxMode) {
-        const storedCode = localStorage.getItem('sabush_simulated_sms_code');
-        let storedPhone = localStorage.getItem('sabush_simulated_phone') || '840000000';
-        if (storedPhone.startsWith('0')) {
-          storedPhone = storedPhone.slice(1);
-        }
-        let finalPhone = storedPhone;
-        if (!storedPhone.startsWith('+')) {
-          if (storedPhone.startsWith('258')) {
-            finalPhone = '+' + storedPhone;
-          } else {
-            finalPhone = '+258' + storedPhone;
-          }
-        }
-
-        if (smsCode !== storedCode) {
-          throw { code: 'auth/invalid-verification-code', message: 'O código de verificação SMS introduzido está incorreto.' };
-        }
-
-        // Set local storage values for guest/sandbox flow so App.tsx can mock the user correctly
-        localStorage.setItem('sabush_guest_active', 'true');
-        localStorage.setItem('sabush_simulated_phone', finalPhone);
-        localStorage.setItem('sabush_simulated_name', 'Aluno Sabush ' + finalPhone.slice(-4));
-        localStorage.setItem('sabush_onboarded', 'true');
-
-        setSuccessMsg('Telemóvel verificado com sucesso (Modo Simulado)!');
-        setTimeout(() => {
-          onAuthSuccess('guest_user_123', false);
-        }, 300);
-        return;
-      }
-
-      if (!confirmationResult) {
-        throw new Error('Sessão expirada. Por favor, solicite um novo código SMS.');
-      }
-
-      const userCredential = await confirmationResult.confirm(smsCode);
-      const user = userCredential.user;
-
-      // Check if profile exists
-      const profile = await getUserProfile(user.uid);
-
-      if (!profile) {
-        // We will save user profile during onboarding/setup.
-        // For now, let's pre-initialize with phone number
-        await saveUserProfile(user.uid, {
-          userId: user.uid,
-          name: 'Aprendiz Club',
-          phoneNumber: user.phoneNumber || undefined,
-          level: 'beginner',
-          learningGoal: 'Conversation',
-          xp: 0,
-          streak: 1,
-          completedLessons: [],
-          lastActiveDate: new Date().toDateString(),
-        });
-      }
-
-      setSuccessMsg('Telemóvel verificado com sucesso!');
-      setTimeout(() => {
-        onAuthSuccess(user.uid, !profile);
-      }, 300);
-    } catch (err: any) {
-      console.error("Verify SMS error details:", err);
-      let friendlyError = err.message;
-      if (err.code === 'auth/invalid-verification-code') {
-        friendlyError = 'O código de verificação SMS introduzido está incorreto ou expirou.';
-      } else if (err.code === 'auth/code-expired') {
-        friendlyError = 'Este código SMS expirou. Por favor, solicite um novo.';
-      } else if (err.code === 'auth/operation-not-allowed') {
-        friendlyError = 'Operação não permitida. Verifique os métodos de login na Consola do Firebase.';
-      }
-      
-      const errorCodeMsg = err.code ? `[Código: ${err.code}] ` : '';
-      setError(`${errorCodeMsg}${friendlyError}`);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleResendSms = async () => {
-    if (cooldown > 0 || loading) return;
-    setError(null);
-    setSuccessMsg(null);
-    setLoading(true);
-
-    try {
-      // Normalize number
-      let cleanedPhone = phone.replace(/\s+/g, '').replace(/[-()]/g, '');
-      if (!cleanedPhone) {
-        throw new Error('Por favor, introduza o seu número de telemóvel.');
-      }
-
-      if (cleanedPhone.startsWith('0')) {
-        cleanedPhone = cleanedPhone.slice(1);
-      }
-      
-      let finalPhone = cleanedPhone;
-      if (!cleanedPhone.startsWith('+')) {
-        if (cleanedPhone.startsWith('258')) {
-          finalPhone = '+' + cleanedPhone;
-        } else {
-          finalPhone = '+258' + cleanedPhone;
-        }
-      }
-
-      console.log('[SABUSH CLUB AUTH] Phone SMS resend attempted. Target:', finalPhone, 'Active Project ID:', firebaseConfig.projectId);
-
-      if (isSandboxMode) {
-        console.log('[SABUSH CLUB SMS SIMULATOR] Resending simulated SMS...');
-        const mockCode = String(Math.floor(100000 + Math.random() * 900000));
-        localStorage.setItem('sabush_simulated_sms_code', mockCode);
-        setCooldown(30);
-        setSmsCode('');
-        setSuccessMsg(`[SIMULADOR SABUSH] Novo código SMS enviado! Use o código de teste: ${mockCode}`);
-        return;
-      }
-
-      // Lazy initialization of RecaptchaVerifier
-      let verifier = recaptchaVerifierRef.current;
-      if (!verifier) {
-        const container = document.getElementById('recaptcha-container');
-        if (!container) {
-          const newContainer = document.createElement('div');
-          newContainer.id = 'recaptcha-container';
-          newContainer.className = 'fixed bottom-0 right-0 z-[9999] pointer-events-none w-0 h-0 opacity-0';
-          document.body.appendChild(newContainer);
-        } else {
-          container.innerHTML = '';
-        }
-        
-        verifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-          size: 'invisible',
-          callback: () => {
-            console.log('[SABUSH CLUB RECAPTCHA] Invisible challenge solved successfully!');
-          },
-          'expired-callback': () => {
-            console.warn('[SABUSH CLUB RECAPTCHA] Invisible challenge expired!');
-            setError('O reCAPTCHA expirou. Por favor, tente novamente.');
-          }
-        });
-        recaptchaVerifierRef.current = verifier;
-      }
-
-      const result = await signInWithPhoneNumber(auth, finalPhone, verifier);
-      
-      setConfirmationResult(result);
-      setCooldown(30);
-      setSuccessMsg('Novo código de verificação SMS enviado com sucesso!');
-    } catch (err: any) {
-      console.error("Phone resend SMS error details:", err);
-      let friendlyError = err.message;
-      if (err.code === 'auth/invalid-phone-number') {
-        friendlyError = 'O número de telemóvel introduzido não é válido.';
-      } else if (err.code === 'auth/too-many-requests') {
-        friendlyError = 'Muitas tentativas feitas para este telemóvel. Por favor, tente mais tarde.';
-      } else if (err.code === 'auth/operation-not-allowed') {
-        friendlyError = 'O login por telefone (SMS) não está ativo no Firebase.';
-      }
-      setError(friendlyError);
-      cleanRecaptcha();
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleResetPhoneForm = () => {
-    setIsSmsSent(false);
-    setConfirmationResult(null);
-    setSmsCode('');
-    setError(null);
-    setSuccessMsg(null);
-    setCooldown(30);
-    setIsSandboxMode(false);
-    cleanRecaptcha();
-  };
-
-  const handlePhoneChange = (val: string) => {
-    const sanitized = val.replace(/[^0-9\s+]/g, '');
-    setPhone(sanitized);
-    const carrier = getMozambicanCarrier(sanitized);
-    setDetectedCarrier(carrier);
   };
 
   return (
@@ -783,7 +347,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                   <span className="shrink-0 text-amber-500">⚠️</span>
                   <span className="text-left font-semibold">{error}</span>
                 </div>
-                {!isSmsSent && (showDevOptions || isSandboxEnvironment) && (
+                {(showDevOptions || isSandboxEnvironment) && (
                   <button
                     type="button"
                     onClick={handleGuestLogin}
@@ -795,36 +359,8 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
               </div>
             )}
 
-            {/* METHOD TABS SELECTOR (GLASS FEEL SLIDER) */}
-            {!isSmsSent && (
-              <div className="grid grid-cols-2 p-1 bg-[#1D5C97]/5 rounded-2xl border border-[#1D5C97]/10 w-full shrink-0">
-                <button
-                  type="button"
-                  onClick={() => setAuthMethod('email')}
-                  className={`py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer flex items-center justify-center gap-1.5 ${
-                    authMethod === 'email'
-                      ? 'bg-[#1D5C97] text-white shadow-xs'
-                      : 'text-[#424B45] hover:text-[#1D5C97]'
-                  }`}
-                >
-                  <span>✉️</span> E-mail &amp; Senha
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setAuthMethod('phone')}
-                  className={`py-2 rounded-xl text-xs font-bold transition-all duration-300 cursor-pointer flex items-center justify-center gap-1.5 ${
-                    authMethod === 'phone'
-                      ? 'bg-[#1D5C97] text-white shadow-xs'
-                      : 'text-[#424B45] hover:text-[#1D5C97]'
-                  }`}
-                >
-                  <span>🇲🇿</span> Telemóvel (SMS)
-                </button>
-              </div>
-            )}
-
-            {/* MAIN FORMS */}
-            {authMethod === 'email' ? (
+            {/* EMAIL / PASSWORD FORM */}
+            <>
               <form onSubmit={handleEmailAuth} className="space-y-4 w-full shrink-0">
                 <div className="flex items-center justify-between px-1 text-[10px] font-bold uppercase tracking-wider">
                   <span className="text-[#1D5C97]">
@@ -898,152 +434,10 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
                   )}
                 </button>
               </form>
-            ) : (
-              <div className="space-y-4 w-full shrink-0">
-                {!isSmsSent ? (
-                  <form onSubmit={handleSendSms} className="space-y-4 w-full">
-                    <div className="space-y-1">
-                      <label className="text-[10px] uppercase font-bold tracking-[0.12em] text-[#556059] block">Número de Telefone</label>
-                      <div className="flex w-full items-stretch rounded-2xl border border-[#1D5C97]/20 bg-slate-50 overflow-hidden focus-within:ring-2 focus-within:ring-[#1D5C97]/5 focus-within:border-[#1D5C97] transition-all h-12 relative">
-                        <div className="bg-[#1D5C97] text-[#FAF9F5] flex items-center justify-center px-4 font-bold text-sm select-none shrink-0 rounded-l-2xl border border-[#1D5C97]">
-                          <span>+258</span>
-                        </div>
-                        <input
-                          type="tel"
-                          required
-                          value={phone}
-                          onChange={(e) => handlePhoneChange(e.target.value)}
-                          placeholder="870 242 114"
-                          className="flex-1 bg-white px-4 text-sm font-bold text-slate-800 placeholder-slate-400 outline-none"
-                        />
-                      </div>
-                      
-                      {detectedCarrier && (() => {
-                        let lightColorClass = 'bg-slate-50 text-slate-700 border-slate-200';
-                        if (detectedCarrier.name.includes('Vodacom')) {
-                          lightColorClass = 'bg-rose-50 text-rose-700 border-rose-100';
-                        } else if (detectedCarrier.name.includes('Movitel')) {
-                          lightColorClass = 'bg-amber-50 text-amber-705 border-amber-200/50';
-                        } else if (detectedCarrier.name.includes('Tmcel')) {
-                          lightColorClass = 'bg-emerald-50 text-emerald-800 border-emerald-100';
-                        }
-                        return (
-                          <div className={`mt-2 flex items-center justify-between text-[11px] p-2.5 px-3 border rounded-xl leading-snug animate-fade-in ${lightColorClass}`}>
-                            <span className="font-bold flex items-center gap-1.5">
-                              <span>{detectedCarrier.logo}</span>
-                              <span className="font-semibold">Rede: {detectedCarrier.name}</span>
-                            </span>
-                            <span className="text-[10px] opacity-80 font-semibold">Prefixos: {detectedCarrier.prefix.join(', ')}</span>
-                          </div>
-                        );
-                      })()}
-                      <div className="mt-2.5 bg-[#FAF9F5] p-3 rounded-2xl border border-[#CFAC62]/20 flex items-start gap-2.5 animate-fade-in">
-                        <ShieldCheck className="w-4 h-4 text-[#CFAC62] shrink-0 mt-0.5" />
-                        <div className="text-left text-[10.5px] text-[#556059] font-medium leading-relaxed">
-                          <strong className="text-[#1D5C97] block font-bold mb-0.5">Segurança &amp; Progresso</strong>
-                          Usamos o teu número para guardar o teu progresso e enviar lembretes.
-                        </div>
-                      </div>
-                      
-                      <span className="text-[9.5px] text-slate-400 block leading-tight mt-1.5 pl-0.5">
-                        Enviaremos um código de verificação gratuito por SMS.
-                      </span>
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="w-full bg-[#1D5C97] hover:bg-[#153E68] active:scale-[0.98] text-[#FAF9F5] font-bold text-xs py-3.5 rounded-2xl cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 min-h-[46px] select-none uppercase tracking-[0.12em] border border-[#CFAC62]/35 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {loading ? (
-                        <Loader2 className="w-5 h-5 animate-spin text-white" />
-                      ) : (
-                        <>
-                          <MessageSquare className="w-4 h-4 text-[#FAF9F5] shrink-0" />
-                          <span>Enviar Código por SMS</span>
-                        </>
-                      )}
-                    </button>
-                  </form>
-                ) : (
-                  <form onSubmit={handleVerifySms} className="space-y-4 w-full">
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-[10px] uppercase font-bold tracking-wider">
-                        <span className="text-[#424B45]">Código SMS recebido</span>
-                        <button
-                          type="button"
-                          onClick={handleResetPhoneForm}
-                          className="text-[#1D5C97] hover:text-[#CFAC62] hover:underline cursor-pointer flex items-center space-x-1 font-bold text-[10px]"
-                        >
-                          <RefreshCw className="w-3 h-3 text-[#1D5C97]" />
-                          <span className="text-[#1D5C97] font-bold">Mudar número</span>
-                        </button>
-                      </div>
-                      <div className="relative">
-                        <input
-                          type="text"
-                          required
-                          maxLength={6}
-                          value={smsCode}
-                          onChange={(e) => setSmsCode(e.target.value.replace(/\D/g, ''))}
-                          placeholder="Ex:  1  2  3  4  5  6"
-                          className="w-full bg-white border border-[#1D5C97]/15 rounded-2xl py-3.5 pl-12 pr-4 text-sm font-bold tracking-[0.4em] text-center text-slate-800 placeholder-slate-400 outline-none focus:ring-2 focus:ring-[#1D5C97]/5 focus:border-[#1D5C97] transition-all shadow-inner h-12"
-                        />
-                        <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center justify-center text-slate-400">
-                          <Key className="w-4 h-4 text-slate-400" />
-                        </div>
-                      </div>
-                      <p className="text-[11px] text-slate-400 leading-tight">
-                        Introduza o código numérico de 6 dígitos enviado para <span className="font-extrabold text-[#1D5C97]">+258 {phone || '870242114'}</span>.
-                      </p>
-
-                      <div className="flex items-center justify-between pt-2 border-t border-slate-100/60 mt-3.5">
-                        <span className="text-[10.5px] text-[#556059] font-medium">Não recebeste o código?</span>
-                        {cooldown > 0 ? (
-                          <span className="text-[10px] text-slate-400 font-bold font-mono flex items-center gap-1 bg-[#FAF9F5] px-2.5 py-1 rounded-md border border-[#CFAC62]/30">
-                            Reenviar em {cooldown}s
-                          </span>
-                        ) : (
-                          <button
-                            type="button"
-                            onClick={handleResendSms}
-                            disabled={loading}
-                            className="text-[#1D5C97] hover:text-[#CFAC62] hover:underline text-[10.5px] font-bold cursor-pointer flex items-center gap-1 disabled:opacity-50"
-                          >
-                            <RefreshCw className="w-3 h-3 text-[#1D5C97]" />
-                            Reenviar código
-                          </button>
-                        )}
-                      </div>
-
-                      {/* Help box for code delivery issues */}
-                      <div className="bg-amber-50/60 border border-amber-200/40 rounded-2xl p-3.5 text-[10.5px] text-amber-900 leading-relaxed font-medium mt-3 flex gap-2.5 w-full text-left">
-                        <HelpCircle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                        <div>
-                          <strong className="text-amber-950 font-bold block mb-0.5">Problemas com o SMS?</strong>
-                          As operadoras (Vodacom, Movitel, Tmcel) por vezes atrasam o envio. Se o código não chegar, podes clicar em "Mudar número" acima para corrigir o número, tentar fazer login com a tua conta <strong className="text-[#1D5C97] font-bold">Google</strong>, ou contactar-nos no WhatsApp: <a href="https://wa.me/258872421114" target="_blank" rel="noreferrer" className="underline font-bold text-amber-900 hover:text-amber-950">+258 87 242 1114</a>.
-                        </div>
-                      </div>
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="w-full bg-[#1D5C97] hover:bg-[#153E68] active:scale-[0.98] text-[#FAF9F5] font-bold text-xs py-3.5 rounded-2xl cursor-pointer shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2 min-h-[46px] select-none uppercase tracking-[0.12em] border border-[#CFAC62]/35 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {loading ? (
-                        <Loader2 className="w-5 h-5 animate-spin text-white" />
-                      ) : (
-                        <span>Confirmar Código SMS</span>
-                      )}
-                    </button>
-                  </form>
-                )}
-              </div>
-            )}
+            </>
 
             {/* SEPARATOR AND ALTERNATIVE ACTION BUTTONS */}
-            {!isSmsSent && (
+            {(
               <div className="space-y-4 pt-1 w-full shrink-0">
                 <div className="relative flex py-1 items-center">
                   <div className="flex-grow border-t border-slate-100/70"></div>
@@ -1146,13 +540,6 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
             </div>
 
           </div>
-
-          {/* Invisible Recaptcha Area */}
-          <div 
-            key={`recaptcha-${authMethod}-${recaptchaResetIndex}`}
-            id="recaptcha-container" 
-            className="fixed bottom-0 right-0 z-[9999] pointer-events-none w-0 h-0 opacity-0" 
-          />
 
         </div>
       </div>
@@ -1296,7 +683,7 @@ export function AuthPage({ onAuthSuccess, onNavigateToVerify }: AuthPageProps) {
           <ShieldCheck className="w-4 h-4 text-[#CFAC62]" />
           <span>Interface em Português para facilitar os seus estudos</span>
         </p>
-        <p className="text-slate-400 font-medium font-sans">A taxa de envio de SMS é coberta integralmente pela Sabush Agency.</p>
+        <p className="text-slate-400 font-medium font-sans">Aprende inglês com o apoio da Sabush Agency.</p>
       </div>
     </div>
   );
