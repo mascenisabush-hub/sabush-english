@@ -24,6 +24,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { Mascot } from './Mascot';
+import { SabushLogo } from './SabushLogo';
 // @ts-ignore
 import heroBanner from '../assets/images/hero_banner.png';
 import { getInspirationCards } from '../firebase';
@@ -100,12 +101,29 @@ export function HomeView({
 
   return (
     <div className="space-y-6 animate-fade-in pb-12">
-      {/* Hero Banner — uploaded brand banner image, with functional CTAs below */}
+      {/* Hero Banner — responsive: legible coded hero on phones, full brand image on tablet/desktop */}
       <div className="rounded-3xl overflow-hidden shadow-lg border border-slate-200" id="home_hero_banner">
+
+        {/* Phone version (below sm breakpoint): the wide raster banner becomes illegible at phone width, so use real scalable text instead */}
+        <div className="sm:hidden bg-gradient-to-br from-slate-50 to-blue-50 p-5">
+          <SabushLogo size="sm" onDark={false} />
+          <div className="inline-flex items-center space-x-1.5 bg-brand-navy-600/10 px-3 py-1 rounded-full text-[10px] font-black tracking-widest text-brand-navy-700 border border-brand-navy-600/20 uppercase mt-4">
+            <Sparkles className="w-3.5 h-3.5 text-brand-gold-600 fill-brand-gold-600" />
+            <span>Aprenda Inglês com Confiança</span>
+          </div>
+          <h1 className="text-2xl font-black leading-tight tracking-tight text-brand-navy-700 mt-3">
+            Fale Inglês com a Melhor Metodologia! 🇲🇿
+          </h1>
+          <p className="text-xs text-slate-600 leading-relaxed font-semibold mt-2">
+            Do Iniciante à Fluência — Inglês prático para a vida real, com suporte inteligente de IA.
+          </p>
+        </div>
+
+        {/* Tablet/desktop version: full brand banner image (all text stays readable at this size) */}
         <img
           src={heroBanner}
           alt="Sabush English Club — Aprenda Inglês com Confiança"
-          className="w-full h-auto object-cover"
+          className="hidden sm:block w-full h-auto object-cover"
         />
 
         <div className="bg-brand-navy-700 p-5 sm:p-6">
